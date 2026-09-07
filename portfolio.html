@@ -1,36 +1,197 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta viewport="width=device-width, initial-scale=1.0">
-<title>แฟ้มสะสมงานของนาย ธนภัทร แซ่ฟุ้ง </title>
-  <img src="my-profile.jpg" alt="รูปโปรไฟล์ของฉัน" width="200">
-<style>
-body { font-family: sans-serif; background-color: #f4f7f6; text-align: center;
-padding: 30px; }
-.container { max-width: 800px; margin: 0 auto; }
-.project-card { background: white; padding: 20px; margin: 20px 0; border-radius:
-8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: left; }
-.btn { display: inline-block; background: #2c3e50; color: white; padding: 10px
-20px; text-decoration: none; border-radius: 5px; margin-top: 20px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | My Featured Works</title>
+  <style>
+    :root {
+      --bg-color: #0b0f17;
+      --card-bg: rgba(22, 27, 38, 0.75);
+      --accent-cyan: #38bdf8;
+      --accent-purple: #c084fc;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --glow-color: rgba(56, 189, 248, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 3rem 1.5rem;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(192, 132, 252, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.12) 0%, transparent 40%);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.6rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 1.5rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 12px 30px -10px var(--glow-color);
+    }
+
+    .card-img-placeholder {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      padding: 0.75rem;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      color: #0d1117;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: scale(1.01);
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-<h1> แฟ้มสะสมงาน นาย ธนภัทร แซ่ฟุ้ง (Portfolio)</h1>
-<p>นี่คือพื้นที่รวบรวมผลงานและกิจกรรมที่ภูมิใจครับ</p>
-<!-- กล่องผลงานชนที่ ้ิ 1 -->
-<div class="project-card">
-<h3>1. โครงงานชิ้นงานวิทยาศาสตร์คำนวณ </h3>
-<p>รายละเอียดชิ้นงานนี้ : เขียนอธิบายสันๆ ว่าทำอะไร ได้เรียนรู้อะไรจากงานนี้บ้าง </p>
-</div>
-<!-- กล่องผลงานชนที่ ้ิ 2 -->
-<div class="project-card">
-<h3>2. กิจกรรม/เกียรติบัตรที่ได้รับ</h3>
-<p>รายละเอียดชิ้นงานนี้ : เข้าร่วมการประกวด หรือกิจกรรมของโรงเรียน...</p>
-</div>
-<!-- ปุ่มกดกลับหน้าแรก -->
-<a href="index.html" class="btn"> กลับหน้าแรก</a>
-</div>
+  <div class="container">
+    <header>
+      <h1 class="title">PORTFOLIO & PROJECTS</h1>
+      <p class="subtitle">รวบรวมผลงาน นวัตกรรม และโปรเจกต์ที่ได้พัฒนา</p>
+    </header>
+
+    <div class="portfolio-grid">
+      <!-- Project Item 1 -->
+      <div class="card">
+        <div class="card-img-placeholder">Project Preview Image</div>
+        <h2 class="card-title">IoT Soil Moisture System</h2>
+        <p class="card-desc">ระบบตรวจจับความชื้นและควบคุมการรดน้ำอัตโนมัติ เชื่อมต่อข้อมูลผ่าน Blynk Cloud</p>
+        <div class="tags">
+          <span class="tag">IoT</span>
+          <span class="tag">Hardware</span>
+          <span class="tag">Cloud</span>
+        </div>
+        <a href="#" class="btn">View Project</a>
+      </div>
+
+      <!-- Project Item 2 -->
+      <div class="card">
+        <div class="card-img-placeholder">Project Preview Image</div>
+        <h2 class="card-title">AI & Cyber Security Lab</h2>
+        <p class="card-desc">การทดลองและพัฒนาโมเดล AI ร่วมกับระบบรักษาความปลอดภัยทางไซเบอร์</p>
+        <div class="tags">
+          <span class="tag">AI</span>
+          <span class="tag">Cyber Security</span>
+          <span class="tag">Python</span>
+        </div>
+        <a href="#" class="btn">View Project</a>
+      </div>
+
+      <!-- Project Item 3 -->
+      <div class="card">
+        <div class="card-img-placeholder">Project Preview Image</div>
+        <h2 class="card-title">Modern Web Application</h2>
+        <p class="card-desc">ออกแบบและพัฒนาเว็บไซต์ด้วยดีไซน์ Responsive เลเอาต์ทันสมัย และ UX/UI แบบพรีเมียม</p>
+        <div class="tags">
+          <span class="tag">Web Design</span>
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">Frontend</span>
+        </div>
+        <a href="#" class="btn">View Project</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
+
