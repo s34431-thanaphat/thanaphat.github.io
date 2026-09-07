@@ -3,75 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | My Featured Works</title>
+  <title>Portfolio & Certificates | ธนภัทร แซ่ฟุ้ง</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg-color: #0b0f17;
+      --bg-color: #0b0d10;
       --card-bg: rgba(22, 27, 38, 0.75);
-      --accent-cyan: #38bdf8;
-      --accent-purple: #c084fc;
+      --gold-primary: #D4AF37;
+      --gold-light: #F7E7A9;
+      --gold-dark: #A37A17;
       --text-main: #f3f4f6;
       --text-muted: #9ca3af;
-      --glow-color: rgba(56, 189, 248, 0.25);
+      --accent-cyan: #38bdf8;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: 'Noto Sans Thai', sans-serif;
     }
 
     body {
       background-color: var(--bg-color);
+      background: radial-gradient(circle at 50% 20%, #161c24 0%, #0b0d10 85%);
       color: var(--text-main);
       min-height: 100vh;
-      padding: 2rem 1.5rem 3rem;
-      background-image: 
-        radial-gradient(circle at 10% 20%, rgba(192, 132, 252, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.12) 0%, transparent 40%);
+      padding: 2.5rem 1.5rem 4rem;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* ปุ่มย้อนกลับสไตล์ Cyber */
+    /* ปุ่มย้อนกลับ */
     .back-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      color: var(--text-muted);
+      color: var(--gold-light);
       text-decoration: none;
       font-weight: 600;
       font-size: 0.95rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
       padding: 0.6rem 1.2rem;
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.25);
       backdrop-filter: blur(8px);
-      transition: all 0.25s ease;
+      transition: all 0.3s ease;
     }
 
     .back-btn:hover {
-      color: var(--accent-cyan);
-      border-color: rgba(56, 189, 248, 0.4);
-      background: rgba(56, 189, 248, 0.1);
+      background: rgba(212, 175, 55, 0.18);
+      border-color: var(--gold-primary);
       transform: translateX(-4px);
-      box-shadow: 0 4px 15px var(--glow-color);
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
     }
 
     .back-btn svg {
       width: 18px;
       height: 18px;
       fill: currentColor;
-      transition: transform 0.25s ease;
-    }
-
-    .back-btn:hover svg {
-      transform: translateX(-2px);
     }
 
     header {
@@ -80,10 +77,10 @@
     }
 
     .title {
+      font-family: 'Playfair Display', 'Noto Sans Thai', serif;
       font-size: 2.8rem;
       font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      background: linear-gradient(135deg, #FFFFFF 0%, #F7E7A9 40%, #D4AF37 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 0.6rem;
@@ -94,53 +91,76 @@
       font-size: 1.1rem;
     }
 
+    /* Grid Layout */
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
     }
 
+    /* Card Component */
     .card {
       background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 18px;
-      padding: 1.5rem;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 20px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
+      transition: all 0.3s ease;
     }
 
     .card:hover {
       transform: translateY(-6px);
-      border-color: rgba(56, 189, 248, 0.5);
-      box-shadow: 0 12px 30px -10px var(--glow-color);
+      border-color: var(--gold-primary);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15);
     }
 
-    .card-img-placeholder {
+    .card-img-wrapper {
       width: 100%;
-      height: 180px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      margin-bottom: 1.2rem;
+      height: 220px;
+      overflow: hidden;
+      background: #111620;
+      position: relative;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .card-img {
+      transform: scale(1.04);
+    }
+
+    .card-body {
+      padding: 1.5rem;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-date {
+      font-size: 0.8rem;
+      color: var(--gold-primary);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.5px;
     }
 
     .card-title {
-      font-size: 1.35rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      line-height: 1.4;
+      margin-bottom: 0.8rem;
       color: #ffffff;
     }
 
     .card-desc {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       margin-bottom: 1.2rem;
       flex-grow: 1;
@@ -150,40 +170,23 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-bottom: 1.5rem;
     }
 
     .tag {
-      background: rgba(56, 189, 248, 0.1);
-      color: var(--accent-cyan);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      padding: 0.25rem 0.7rem;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--gold-light);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 0.25rem 0.75rem;
       border-radius: 20px;
       font-size: 0.75rem;
       font-weight: 600;
     }
-
-    .btn {
-      display: block;
-      text-align: center;
-      padding: 0.75rem;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-      color: #0d1117;
-      font-weight: 700;
-      text-decoration: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .btn:hover {
-      opacity: 0.9;
-      transform: scale(1.01);
-    }
   </style>
 </head>
 <body>
+
   <div class="container">
-    <!-- ลิงก์ย้อนกลับไปยังหน้าแรก -->
+    <!-- ปุ่มย้อนกลับไปหน้าปก -->
     <a href="index.html" class="back-btn">
       <svg viewBox="0 0 24 24">
         <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
@@ -192,51 +195,66 @@
     </a>
 
     <header>
-      <h1 class="title">PORTFOLIO & PROJECTS</h1>
-      <p class="subtitle">รวบรวมผลงาน นวัตกรรม และโปรเจกต์ที่ได้พัฒนา</p>
+      <h1 class="title">CERTIFICATES & WORKSHOPS</h1>
+      <p class="subtitle">เกียรติบัตรและการเข้าร่วมกิจกรรมฝึกอบรมเชิงปฏิบัติการ</p>
     </header>
 
     <div class="portfolio-grid">
-      <!-- Project Item 1 -->
+
+      <!-- Certificate 1 -->
       <div class="card">
-        <div class="card-img-placeholder">Project Preview Image</div>
-        <h2 class="card-title">IoT Soil Moisture System</h2>
-        <p class="card-desc">ระบบตรวจจับความชื้นและควบคุมการรดน้ำอัตโนมัติ เชื่อมต่อข้อมูลผ่าน Blynk Cloud</p>
-        <div class="tags">
-          <span class="tag">IoT</span>
-          <span class="tag">Hardware</span>
-          <span class="tag">Cloud</span>
+        <div class="card-img-wrapper">
+          <img src="cert1.jpg" alt="K-Engineering World Tour and Workshop 2025" class="card-img">
         </div>
-        <a href="#" class="btn">View Project</a>
+        <div class="card-body">
+          <div class="card-date">3 สิงหาคม 2568</div>
+          <h2 class="card-title">K-Engineering World Tour and Workshop 2025</h2>
+          <p class="card-desc">เข้าร่วมกิจกรรมเชิงปฏิบัติการด้านวิศวกรรมศาสตร์ คณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (KMITL)</p>
+          <div class="tags">
+            <span class="tag">Engineering</span>
+            <span class="tag">KMITL</span>
+            <span class="tag">Workshop</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Project Item 2 -->
+      <!-- Certificate 2 -->
       <div class="card">
-        <div class="card-img-placeholder">Project Preview Image</div>
-        <h2 class="card-title">AI & Cyber Security Lab</h2>
-        <p class="card-desc">การทดลองและพัฒนาโมเดล AI ร่วมกับระบบรักษาความปลอดภัยทางไซเบอร์</p>
-        <div class="tags">
-          <span class="tag">AI</span>
-          <span class="tag">Cyber Security</span>
-          <span class="tag">Python</span>
+        <div class="card-img-wrapper">
+          <img src="cert2.jpg" alt="ปัญญาประดิษฐ์พื้นฐานร่วมกับข้อมูลด้านความมั่นคงปลอดภัยทางไซเบอร์" class="card-img">
         </div>
-        <a href="#" class="btn">View Project</a>
+        <div class="card-body">
+          <div class="card-date">5 กรกฎาคม 2569</div>
+          <h2 class="card-title">Workshop ปัญญาประดิษฐ์พื้นฐานร่วมกับข้อมูลด้านความมั่นคงปลอดภัยทางไซเบอร์ [EE, Computing]</h2>
+          <p class="card-desc">ในงาน K-ENGINEERING WORLD TOUR AND COMPETENCY CHALLENGE 2026 คณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
+          <div class="tags">
+            <span class="tag">AI</span>
+            <span class="tag">Cyber Security</span>
+            <span class="tag">Computing</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Project Item 3 -->
+      <!-- Certificate 3 -->
       <div class="card">
-        <div class="card-img-placeholder">Project Preview Image</div>
-        <h2 class="card-title">Modern Web Application</h2>
-        <p class="card-desc">ออกแบบและพัฒนาเว็บไซต์ด้วยดีไซน์ Responsive เลเอาต์ทันสมัย และ UX/UI แบบพรีเมียม</p>
-        <div class="tags">
-          <span class="tag">Web Design</span>
-          <span class="tag">HTML/CSS</span>
-          <span class="tag">Frontend</span>
+        <div class="card-img-wrapper">
+          <img src="cert3.jpg" alt="PLC ขั้นพื้นฐาน" class="card-img">
         </div>
-        <a href="#" class="btn">View Project</a>
+        <div class="card-body">
+          <div class="card-date">5 กรกฎาคม 2569</div>
+          <h2 class="card-title">Workshop PLC ขั้นพื้นฐาน [EE, Computing]</h2>
+          <p class="card-desc">ฝึกอบรมการโปรแกรม Programmable Logic Controller (PLC) ในงาน K-ENGINEERING WORLD TOUR AND COMPETENCY CHALLENGE 2026</p>
+          <div class="tags">
+            <span class="tag">PLC</span>
+            <span class="tag">Automation</span>
+            <span class="tag">EE & Computing</span>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
+
 </body>
 </html>
 
