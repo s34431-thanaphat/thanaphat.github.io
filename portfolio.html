@@ -26,7 +26,7 @@
       background-color: var(--bg-color);
       color: var(--text-main);
       min-height: 100vh;
-      padding: 3rem 1.5rem;
+      padding: 2rem 1.5rem 3rem;
       background-image: 
         radial-gradient(circle at 10% 20%, rgba(192, 132, 252, 0.12) 0%, transparent 40%),
         radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.12) 0%, transparent 40%);
@@ -35,6 +35,43 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
+    }
+
+    /* ปุ่มย้อนกลับสไตล์ Cyber */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
+    }
+
+    .back-btn:hover {
+      color: var(--accent-cyan);
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(56, 189, 248, 0.1);
+      transform: translateX(-4px);
+      box-shadow: 0 4px 15px var(--glow-color);
+    }
+
+    .back-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      transition: transform 0.25s ease;
+    }
+
+    .back-btn:hover svg {
+      transform: translateX(-2px);
     }
 
     header {
@@ -146,6 +183,14 @@
 </head>
 <body>
   <div class="container">
+    <!-- ลิงก์ย้อนกลับไปยังหน้าแรก -->
+    <a href="index.html" class="back-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+      </svg>
+      กลับหน้าหลัก
+    </a>
+
     <header>
       <h1 class="title">PORTFOLIO & PROJECTS</h1>
       <p class="subtitle">รวบรวมผลงาน นวัตกรรม และโปรเจกต์ที่ได้พัฒนา</p>
