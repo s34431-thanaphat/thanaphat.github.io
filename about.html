@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ข้อมูลส่วนตัว | ธนภัทร แซ่ฟุ้ง</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #0b0d10;
+      --card-bg: rgba(22, 27, 38, 0.75);
+      --gold-primary: #D4AF37;
+      --gold-light: #F7E7A9;
+      --gold-dark: #A37A17;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --bounce-timing: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans Thai', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      background: radial-gradient(circle at 50% 20%, #161c24 0%, #0b0d10 85%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 1.5rem 4rem;
+      overflow-x: hidden;
+    }
+
+    /* Keyframe Animations */
+    @keyframes floatAnimation {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.25); }
+      50% { box-shadow: 0 0 35px rgba(212, 175, 55, 0.45); }
+    }
+
+    /* 1. Top Navigation Bar */
+    .navbar {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      backdrop-filter: blur(16px);
+      padding: 0.6rem 1.8rem;
+      border-radius: 50px;
+      width: 100%;
+      max-width: 900px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: border-color 0.3s ease;
+    }
+
+    .navbar:hover {
+      border-color: var(--gold-primary);
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: 1.5px;
+      color: var(--gold-primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-item {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      transition: all 0.3s var(--bounce-timing);
+    }
+
+    .nav-item:hover, .nav-item.active {
+      color: var(--gold-light);
+      background: rgba(212, 175, 55, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* 2. Container & Header */
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin-top: 2.5rem;
+    }
+
+    .header-section {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .page-title {
+      font-family: 'Playfair Display', 'Noto Sans Thai', serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFFFFF 0%, #F7E7A9 40%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* 3. Layout Grid */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 0.8rem;
+        border-radius: 25px;
+      }
+    }
+
+    /* Card Box Design */
+    .card-box {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 20px;
+      padding: 1.8rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: transform 0.4s var(--bounce-timing), border-color 0.3s ease, box-shadow 0.4s ease;
+    }
+
+    .card-box:hover {
+      transform: translateY(-6px) scale(1.01);
+      border-color: var(--gold-primary);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.2);
+    }
+
+    /* Left Profile Card */
+    .profile-sidebar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .avatar-ring {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      padding: 5px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      animation: floatAnimation 5s ease-in-out infinite, pulseGlow 3s ease-in-out infinite;
+      margin-bottom: 1.2rem;
+      transition: transform 0.4s var(--bounce-timing);
+    }
+
+    .avatar-ring:hover {
+      transform: scale(1.08) rotate(3deg);
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #0d1117;
+    }
+
+    .profile-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+    }
+
+    .profile-tag {
+      color: var(--gold-primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .quick-info {
+      width: 100%;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.15);
+      padding-top: 1.2rem;
+    }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+    }
+
+    .info-label {
+      color: var(--text-muted);
+    }
+
+    .info-value {
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    /* Right Main Content Cards */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      padding-bottom: 0.5rem;
+    }
+
+    .bio-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.8rem;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 0.8rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s var(--bounce-timing), background 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px) scale(1.05);
+      background: rgba(212, 175, 55, 0.12);
+      border-color: var(--gold-primary);
+    }
+
+    .skill-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    /* Timeline Section */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 1.2rem;
+      border-left: 2px solid var(--gold-primary);
+    }
+
+    .timeline-date {
+      font-size: 0.78rem;
+      color: var(--gold-primary);
+      font-weight: 600;
+    }
+
+    .timeline-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0.2rem 0;
+    }
+
+    .timeline-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">THANAPHAT</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-item">🏠 หน้าแรก</a>
+      <a href="about.html" class="nav-item active">👤 ข้อมูลส่วนตัว</a>
+      <a href="portfolio.html" class="nav-item">📁 แฟ้มสะสมผลงาน</a>
+    </div>
+  </nav>
+
+  <!-- Container -->
+  <div class="container">
+    
+    <header class="header-section">
+      <h1 class="page-title">ABOUT ME</h1>
+      <p class="page-subtitle">ประวัติ ข้อมูลส่วนตัว และความสนใจด้านเทคโนโลยี</p>
+    </header>
+
+    <div class="about-grid">
+      
+      <!-- Left Sidebar -->
+      <div class="card-box profile-sidebar">
+        <div class="avatar-ring">
+          <img src="profile.jpg" alt="ธนภัทร แซ่ฟุ้ง" class="avatar-img">
+        </div>
+        <h2 class="profile-name">ธนภัทร แซ่ฟุ้ง</h2>
+        <p class="profile-tag">DEK70 Student / Developer</p>
+
+        <div class="quick-info">
+          <div class="info-item">
+            <span class="info-label">สัญชาติ:</span>
+            <span class="info-value">ไทย</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">เป้าหมาย:</span>
+            <span class="info-value">วิศวกรรมศาสตร์ / ไอที</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">สถานะ:</span>
+            <span class="info-value">กำลังศึกษา</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Main Content -->
+      <div class="main-content">
+        
+        <!-- Bio Card -->
+        <div class="card-box">
+          <h3 class="section-title">📌 ประวัติโดยย่อ (Biography)</h3>
+          <p class="bio-text">
+            มีความหลงใหลในโลกของเทคโนโลยีตั้งแต่ระบบสมองกลฝังตัว (IoT) การพัฒนาซอฟต์แวร์ ไปจนถึงระบบปัญญาประดิษฐ์ (AI) และความปลอดภัยทางไซเบอร์ (Cyber Security) มุ่งมั่นที่จะศึกษาต่อในระดับอุดมศึกษาเพื่อพัฒนาทักษะเชิงลึก นำความรู้ไปต่อยอดสร้างสรรค์นวัตกรรมใหม่ๆ ในอนาคต
+          </p>
+        </div>
+
+        <!-- Skills Card -->
+        <div class="card-box">
+          <h3 class="section-title">⚡ ทักษะและความสนใจ (Skills & Interests)</h3>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <div class="skill-name">IoT & Sensors</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-name">AI Basics</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-name">Cyber Security</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-name">PLC Systems</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-name">Web Development</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-name">Programming</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience / Training Card -->
+        <div class="card-box">
+          <h3 class="section-title">🎓 การฝึกอบรมและกิจกรรม (Workshops)</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">กรกฎาคม 2569</div>
+              <div class="timeline-title">Workshop AI & Cyber Security [KMITL]</div>
+              <div class="timeline-desc">อบรมปัญญาประดิษฐ์พื้นฐานร่วมกับความปลอดภัยทางไซเบอร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">กรกฎาคม 2569</div>
+              <div class="timeline-title">Workshop PLC ขั้นพื้นฐาน [KMITL]</div>
+              <div class="timeline-desc">ฝึกอบรมการโปรแกรม Programmable Logic Controller ในงาน K-Engineering World Tour 2026</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">สิงหาคม 2568</div>
+              <div class="timeline-title">K-Engineering World Tour and Workshop 2025</div>
+              <div class="timeline-desc">เข้าร่วมกิจกรรมเชิงปฏิบัติการด้านวิศวกรรมศาสตร์ คณะวิศวกรรมศาสตร์ KMITL</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
