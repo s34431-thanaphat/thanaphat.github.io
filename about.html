@@ -783,4 +783,127 @@
         <div class="info-box">
           <div class="info-icon">📷</div>
           <div>
-            <div class="info-lbl">Inst
+            <div class="info-lbl">Instagram</div>
+            <div class="info-val">kla.narakk</div>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-icon">🌐</div>
+          <div>
+            <div class="info-lbl">Facebook</div>
+            <div class="info-val">Kla Zx</div>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-icon">✉️</div>
+          <div>
+            <div class="info-lbl">Gmail</div>
+            <div class="info-val">tonkla555ps@gmail.com</div>
+          </div>
+        </div>
+
+        <div class="info-box contact-full">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-lbl">ที่อยู่ปัจจุบัน</div>
+            <div class="info-val">81/5 หมู่ 5 ต.หนองไผ่แก้ว อ.บ้านบึง จ.ชลบุรี</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ปุ่ม CTA ล่างสุด -->
+    <div class="bottom-cta">
+      <a href="portfolio.html" class="btn-portfolio">
+        เข้าชมแฟ้มสะสมผลงาน (Portfolio) &rarr;
+      </a>
+    </div>
+
+  </div>
+
+  <!-- POPUP MODAL (TARGET GOAL) -->
+  <div class="modal-overlay" id="facultyModal" onclick="closeFacultyModalOnOutside(event)">
+    <div class="modal-container">
+      <button type="button" class="modal-close-btn" onclick="closeFacultyModal()">&times;</button>
+      
+      <div class="modal-tag">🎯 TARGET GOAL</div>
+      
+      <div class="modal-title">คณะเทคโนโลยีสารสนเทศ (IT)</div>
+      <div class="modal-subtitle">สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (KMITL)</div>
+
+      <div class="modal-section-heading">
+        <span class="check-icon">✓</span> ทำไมถึงมั่นใจว่าเหมาะสมและพร้อมศึกษาในคณะนี้
+      </div>
+
+      <div class="modal-cards-list">
+        
+        <div class="modal-info-card">
+          <div class="modal-card-header">
+            <span class="modal-card-icon">🏵️</span>
+            <span class="modal-card-title">ประสบการณ์ตรงจาก Workshop ของ สจล.</span>
+          </div>
+          <div class="modal-card-desc">
+            ผ่านการเข้าร่วมเวิร์กช็อป K-Engineering World Tour ของสถาบันฯ โดยตรง ทั้งในหัวข้อ Basic AI with Cybersecurity, PLC Control และ IoT Engineering บน Blynk.Console จึงคุ้นเคยกับบรรยากาศวิชาการและการปฏิบัติจริงของ สจล.
+          </div>
+        </div>
+
+        <div class="modal-info-card">
+          <div class="modal-card-header">
+            <span class="modal-card-icon">&lt;/&gt;</span>
+            <span class="modal-card-title">ทักษะการออกแบบและพัฒนาเว็บ (Web & UX/UI Design)</span>
+          </div>
+          <div class="modal-card-desc">
+            มีความสามารถด้าน Web Design ในการจัดวางโครงสร้าง ประสบการณ์ใช้งาน (UI/UX) และพัฒนาหน้าเว็บได้จริง ซึ่งเป็นหัวใจสำคัญอย่างหนึ่งในการเรียนด้านเทคโนโลยีสารสนเทศสมัยใหม่
+          </div>
+        </div>
+
+        <div class="modal-info-card">
+          <div class="modal-card-header">
+            <span class="modal-card-icon">⚙️</span>
+            <span class="modal-card-title">ความเชี่ยวชาญด้านฮาร์ดแวร์และระบบควบคุม</span>
+          </div>
+          <div class="modal-card-desc">
+            เข้าใจการโปรแกรมและควบคุม PLC การทำงานของระบบหุ่นยนต์ รวมถึงการเลือกสเปกคอมพิวเตอร์และสถาปัตยกรรมไอที ทำให้พร้อมต่อยอดทั้งฝั่ง Software และ Hardware Integration
+          </div>
+        </div>
+
+        <div class="modal-info-card">
+          <div class="modal-card-header">
+            <span class="modal-card-icon">🧠</span>
+            <span class="modal-card-title">กระบวนการคิดเชิงตรรกะและการแก้ปัญหาที่เป็นระบบ</span>
+          </div>
+          <div class="modal-card-desc">
+            ถนัดการคิดวิเคราะห์ วางแผนเป็นขั้นตอน และการสร้างสื่อ 3D Modeling ช่วยสนับสนุนการคิดเชิงสร้างสรรค์และการแก้โจทย์เทคโนโลยีที่ซับซ้อนได้อย่างมีประสิทธิภาพ
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript สำหรับเปิด-ปิด Modal -->
+  <script>
+    function openFacultyModal() {
+      const modal = document.getElementById('facultyModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeFacultyModal() {
+      const modal = document.getElementById('facultyModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeFacultyModalOnOutside(event) {
+      if (event.target.classList.contains('modal-overlay')) {
+        closeFacultyModal();
+      }
+    }
+  </script>
+
+</body>
+</html>
