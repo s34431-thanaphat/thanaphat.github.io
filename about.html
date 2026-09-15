@@ -11,8 +11,8 @@
   <style>
     :root {
       --bg-color: #0b0d10;
-      --card-bg: rgba(22, 27, 38, 0.75);
-      --card-border: rgba(212, 175, 55, 0.2);
+      --card-bg: rgba(22, 27, 38, 0.8);
+      --card-border: rgba(212, 175, 55, 0.25);
       --gold-primary: #D4AF37;
       --gold-light: #F7E7A9;
       --gold-dark: #A37A17;
@@ -28,32 +28,30 @@
       font-family: 'Noto Sans Thai', sans-serif;
     }
 
-    body {
+    html, body {
+      width: 100%;
+      min-height: 100vh;
       background-color: var(--bg-color);
       background: radial-gradient(circle at 50% 20%, #161c24 0%, #0b0d10 85%);
       color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1.5rem 1.5rem 5rem;
       overflow-x: hidden;
     }
 
-    /* Keyframe Animations */
-    @keyframes floatAnimation {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 1rem 5rem;
     }
 
-    /* 1. Top Navigation Bar */
+    /* Navigation Bar */
     .navbar {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       background: var(--card-bg);
-      border: 1px solid rgba(212, 175, 55, 0.25);
+      border: 1px solid var(--card-border);
       backdrop-filter: blur(16px);
       padding: 0.6rem 1.8rem;
       border-radius: 50px;
@@ -99,68 +97,68 @@
     }
 
     /* Main Container */
-    .container {
+    .main-wrapper {
       width: 100%;
       max-width: 950px;
-      margin-top: 2.5rem;
+      margin-top: 2rem;
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
+      gap: 2rem;
     }
 
-    /* Section Component Structure */
+    /* Section Block Base */
     .section-block {
+      width: 100%;
       background: var(--card-bg);
       backdrop-filter: blur(16px);
       border: 1px solid var(--card-border);
       border-radius: 24px;
-      padding: 2rem;
+      padding: 1.8rem;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      transition: transform 0.4s var(--bounce-timing), border-color 0.3s ease;
+      transition: border-color 0.3s ease;
     }
 
     .section-block:hover {
       border-color: rgba(212, 175, 55, 0.4);
     }
 
-    .section-header {
-      font-size: 1.3rem;
+    .section-title {
+      font-size: 1.25rem;
       font-weight: 800;
       color: #ffffff;
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
     }
 
-    .section-header .icon {
+    .section-title .icon {
       color: var(--gold-primary);
-      font-size: 1.4rem;
     }
 
-    /* --- SECTION 1: Personal Profile & Target University --- */
-    .profile-grid {
+    /* --- SECTION 1: Profile Top Grid --- */
+    .profile-layout {
       display: grid;
       grid-template-columns: 280px 1fr;
-      gap: 1.5rem;
+      gap: 1.2rem;
+      width: 100%;
     }
 
-    /* Target University Card */
     .target-uni-card {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--card-border);
       border-radius: 20px;
-      padding: 1.8rem 1.2rem;
+      padding: 1.5rem 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       justify-content: space-between;
-      transition: transform 0.4s var(--bounce-timing);
+      transition: transform 0.3s var(--bounce-timing);
     }
 
     .target-uni-card:hover {
-      transform: translateY(-6px) scale(1.02);
+      transform: translateY(-4px);
       border-color: var(--gold-primary);
     }
 
@@ -176,9 +174,9 @@
     }
 
     .uni-logo {
-      width: 90px;
-      height: 90px;
-      margin: 1.5rem 0;
+      width: 85px;
+      height: 85px;
+      margin: 1.2rem 0;
       object-fit: contain;
       filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
     }
@@ -191,22 +189,22 @@
     }
 
     .uni-name {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: #ffffff;
       line-height: 1.4;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .btn-uni-detail {
       background: rgba(212, 175, 55, 0.1);
       border: 1px solid var(--gold-primary);
       color: var(--gold-light);
-      padding: 0.5rem 1rem;
+      padding: 0.45rem 1rem;
       border-radius: 20px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      text-decoration: none;
+      cursor: pointer;
       transition: all 0.3s var(--bounce-timing);
     }
 
@@ -216,33 +214,34 @@
       transform: scale(1.05);
     }
 
-    /* 6 Info Cards Grid */
+    /* 6 Info Cards */
     .info-cards-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      gap: 0.9rem;
+      width: 100%;
     }
 
-    .info-mini-card {
+    .info-box {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--card-border);
       border-radius: 16px;
-      padding: 1rem 1.2rem;
+      padding: 1rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.9rem;
       transition: transform 0.3s var(--bounce-timing), border-color 0.3s ease;
     }
 
-    .info-mini-card:hover {
-      transform: translateY(-4px);
+    .info-box:hover {
+      transform: translateY(-3px);
       border-color: var(--gold-primary);
       background: rgba(212, 175, 55, 0.05);
     }
 
-    .info-icon-box {
-      width: 42px;
-      height: 42px;
+    .info-icon {
+      width: 40px;
+      height: 40px;
       border-radius: 12px;
       background: rgba(212, 175, 55, 0.12);
       border: 1px solid rgba(212, 175, 55, 0.25);
@@ -250,20 +249,21 @@
       align-items: center;
       justify-content: center;
       color: var(--gold-light);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       flex-shrink: 0;
     }
 
-    .info-label {
-      font-size: 0.8rem;
+    .info-lbl {
+      font-size: 0.78rem;
       color: var(--text-muted);
       margin-bottom: 0.2rem;
     }
 
-    .info-value {
-      font-size: 0.95rem;
+    .info-val {
+      font-size: 0.92rem;
       font-weight: 700;
       color: #ffffff;
+      word-break: break-word;
     }
 
     /* --- SECTION 2: Education --- */
@@ -271,100 +271,99 @@
       display: grid;
       grid-template-columns: 2fr 1fr;
       gap: 1rem;
+      width: 100%;
     }
 
     .edu-card {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 1.5rem;
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
       display: flex;
       align-items: center;
-      gap: 1.2rem;
+      gap: 1rem;
     }
 
     .gpax-card {
       background: linear-gradient(135deg, #D4AF37 0%, #A37A17 100%);
       color: #0b0d10;
-      border-radius: 18px;
-      padding: 1.5rem;
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25);
       transition: transform 0.3s var(--bounce-timing);
     }
 
     .gpax-card:hover {
-      transform: scale(1.03) translateY(-3px);
+      transform: scale(1.02);
     }
 
-    .gpax-label {
-      font-size: 0.85rem;
+    .gpax-lbl {
+      font-size: 0.8rem;
       font-weight: 700;
       opacity: 0.9;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
     }
 
     .gpax-val {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 800;
       line-height: 1;
-      margin-top: 0.4rem;
+      margin-top: 0.3rem;
     }
 
-    /* --- SECTION 3: Special Skills Grid --- */
-    .skills-grid-3d {
+    /* --- SECTION 3: Skills --- */
+    .skills-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.2rem;
+      gap: 1rem;
+      width: 100%;
     }
 
-    .skill-box {
+    .skill-card {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 1.4rem;
+      border-radius: 16px;
+      padding: 1.2rem;
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
-      transition: transform 0.4s var(--bounce-timing), border-color 0.3s ease;
+      gap: 0.7rem;
+      transition: transform 0.3s var(--bounce-timing), border-color 0.3s ease;
     }
 
-    .skill-box:hover {
-      transform: translateY(-6px) scale(1.02);
+    .skill-card:hover {
+      transform: translateY(-4px);
       border-color: var(--gold-primary);
-      background: rgba(212, 175, 55, 0.06);
+      background: rgba(212, 175, 55, 0.05);
     }
 
-    .skill-top {
+    .skill-header {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.7rem;
     }
 
     .skill-title {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 700;
       color: #ffffff;
     }
 
     .skill-desc {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
-    .skill-pill-tag {
+    .skill-tag {
       align-self: flex-start;
       background: rgba(212, 175, 55, 0.12);
       border: 1px solid rgba(212, 175, 55, 0.3);
       color: var(--gold-light);
-      padding: 0.2rem 0.7rem;
+      padding: 0.2rem 0.6rem;
       border-radius: 12px;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
       margin-top: auto;
     }
@@ -373,54 +372,218 @@
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      gap: 0.9rem;
+      width: 100%;
     }
 
-    .contact-card-full {
-      grid-column: span 2;
+    .contact-full {
+      grid-column: 1 / -1;
     }
 
-    /* CTA Bottom Button */
+    /* Bottom Button */
     .bottom-cta {
       display: flex;
       justify-content: center;
-      margin-top: 1rem;
+      width: 100%;
+      margin-top: 0.5rem;
     }
 
-    .btn-cta-portfolio {
+    .btn-portfolio {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.6rem;
       padding: 0.9rem 2.5rem;
       border-radius: 50px;
       background: linear-gradient(135deg, #D4AF37 0%, #A37A17 100%);
       color: #0b0d10;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 800;
       text-decoration: none;
-      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
-      transition: transform 0.4s var(--bounce-timing), box-shadow 0.3s ease;
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+      transition: transform 0.3s var(--bounce-timing), box-shadow 0.3s ease;
     }
 
-    .btn-cta-portfolio:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
+    .btn-portfolio:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.45);
     }
 
-    @media (max-width: 820px) {
-      .profile-grid, .edu-grid, .skills-grid-3d, .contact-grid {
+    /* --- MODAL STYLES (Light & Orange Theme matching images) --- */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-container {
+      background: #FFFBF7;
+      color: #332B27;
+      width: 100%;
+      max-width: 680px;
+      max-height: 88vh;
+      overflow-y: auto;
+      border-radius: 24px;
+      padding: 2rem 1.8rem;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      transform: translateY(20px);
+      transition: transform 0.3s var(--bounce-timing);
+    }
+
+    .modal-overlay.active .modal-container {
+      transform: translateY(0);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: #FFEBE1;
+      color: #E65100;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: #FFD2C1;
+      transform: scale(1.1);
+    }
+
+    .modal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #FFE8DF;
+      color: #D84315;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      margin-bottom: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+
+    .modal-target-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #D84315;
+      margin-bottom: 0.25rem;
+    }
+
+    .modal-target-sub {
+      font-size: 0.9rem;
+      color: #665C58;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 1.4rem;
+      border-bottom: 1px solid #F0E6E1;
+      padding-bottom: 1rem;
+    }
+
+    .modal-section-heading {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: #1A1A1A;
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .modal-check-icon {
+      background: #E65100;
+      color: #FFFFFF;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .modal-cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .modal-info-card {
+      background: #FFF3EC;
+      border-left: 4px solid #E65100;
+      border-radius: 16px;
+      padding: 1.1rem 1.2rem;
+    }
+
+    .modal-card-head {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #231916;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .modal-card-body {
+      font-size: 0.85rem;
+      color: #554A45;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* Responsive Breakdown */
+    @media (max-width: 850px) {
+      .profile-layout {
         grid-template-columns: 1fr;
       }
-      .contact-card-full {
-        grid-column: span 1;
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
-      .info-cards-grid {
+      .edu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .info-cards-grid, .contact-grid, .skills-grid {
         grid-template-columns: 1fr;
       }
       .navbar {
         flex-direction: column;
         gap: 0.8rem;
         border-radius: 25px;
+      }
+      .modal-container {
+        padding: 1.5rem 1.2rem;
       }
     }
   </style>
@@ -437,10 +600,11 @@
     </div>
   </nav>
 
-  <main class="container">
+  <!-- Main Container -->
+  <div class="main-wrapper">
     
-    <!-- 1. ข้อมูลส่วนตัว + มหาวิทยาลัยที่อยากเข้า -->
-    <div class="profile-grid">
+    <!-- 1. ข้อมูลส่วนตัว + มหาวิทยาลัยเป้าหมาย -->
+    <div class="profile-layout">
       
       <!-- Target University Box -->
       <div class="target-uni-card">
@@ -450,57 +614,57 @@
           <div class="uni-title">มหาวิทยาลัยที่อยากเข้า</div>
           <div class="uni-name">สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (KMITL)</div>
         </div>
-        <a href="portfolio.html" class="btn-uni-detail">📍 คลิกเพื่อดูรายละเอียดคณะ</a>
+        <button type="button" class="btn-uni-detail" onclick="openFacultyModal()">📍 คลิกเพื่อดูรายละเอียดคณะ</button>
       </div>
 
-      <!-- 6 Info Grid Cards -->
+      <!-- 6 Info Cards -->
       <div class="info-cards-grid">
         
-        <div class="info-mini-card">
-          <div class="info-icon-box">👤</div>
+        <div class="info-box">
+          <div class="info-icon">👤</div>
           <div>
-            <div class="info-label">ชื่อ - นามสกุล</div>
-            <div class="info-value">นายธนภัทร แซ่ฟุ้ง</div>
+            <div class="info-lbl">ชื่อ - นามสกุล</div>
+            <div class="info-val">นายธนภัทร แซ่ฟุ้ง</div>
           </div>
         </div>
 
-        <div class="info-mini-card">
-          <div class="info-icon-box">😊</div>
+        <div class="info-box">
+          <div class="info-icon">😊</div>
           <div>
-            <div class="info-label">ชื่อเล่น</div>
-            <div class="info-value"กล้า</div>
+            <div class="info-lbl">ชื่อเล่น</div>
+            <div class="info-val">กล้า</div>
           </div>
         </div>
 
-        <div class="info-mini-card">
-          <div class="info-icon-box">🎂</div>
+        <div class="info-box">
+          <div class="info-icon">🎂</div>
           <div>
-            <div class="info-label">วันเกิด</div>
-            <div class="info-value">31 มีนาคม 2552</div>
+            <div class="info-lbl">วันเกิด</div>
+            <div class="info-val">31 มีนาคม 2552</div>
           </div>
         </div>
 
-        <div class="info-mini-card">
-          <div class="info-icon-box">⏳</div>
+        <div class="info-box">
+          <div class="info-icon">⏳</div>
           <div>
-            <div class="info-label">อายุ</div>
-            <div class="info-value">17 ปี</div>
+            <div class="info-lbl">อายุ</div>
+            <div class="info-val">17 ปี</div>
           </div>
         </div>
 
-        <div class="info-mini-card">
-          <div class="info-icon-box">🚩</div>
+        <div class="info-box">
+          <div class="info-icon">🚩</div>
           <div>
-            <div class="info-label">เชื้อชาติ / สัญชาติ</div>
-            <div class="info-value">ไทย</div>
+            <div class="info-lbl">เชื้อชาติ / สัญชาติ</div>
+            <div class="info-val">ไทย</div>
           </div>
         </div>
 
-        <div class="info-mini-card">
-          <div class="info-icon-box">☸️</div>
+        <div class="info-box">
+          <div class="info-icon">☸️</div>
           <div>
-            <div class="info-label">ศาสนา</div>
-            <div class="info-value">พุทธ</div>
+            <div class="info-lbl">ศาสนา</div>
+            <div class="info-val">พุทธ</div>
           </div>
         </div>
 
@@ -510,21 +674,21 @@
 
     <!-- 2. ประวัติการศึกษา -->
     <section class="section-block">
-      <div class="section-header">
+      <div class="section-title">
         <span class="icon">🎓</span> ประวัติการศึกษา
       </div>
       
       <div class="edu-grid">
         <div class="edu-card">
-          <div class="info-icon-box">📚</div>
+          <div class="info-icon">📚</div>
           <div>
-            <div class="info-label">สายการเรียน</div>
-            <div class="info-value" style="font-size: 1.1rem;">เตรียมวิทยาการคอมพิวเตอร์และวิศวกรรม</div>
+            <div class="info-lbl">สายการเรียน</div>
+            <div class="info-val" style="font-size: 1.05rem;">เตรียมวิทยาการคอมพิวเตอร์และวิศวกรรม</div>
           </div>
         </div>
 
         <div class="gpax-card">
-          <div class="gpax-label">⭐ เกรดเฉลี่ยสะสม (GPAX)</div>
+          <div class="gpax-lbl">⭐ เกรดเฉลี่ยสะสม (GPAX)</div>
           <div class="gpax-val">3.71</div>
         </div>
       </div>
@@ -532,64 +696,64 @@
 
     <!-- 3. ความสามารถพิเศษ -->
     <section class="section-block">
-      <div class="section-header">
+      <div class="section-title">
         <span class="icon">🤖</span> ความสามารถพิเศษ
       </div>
 
-      <div class="skills-grid-3d">
+      <div class="skills-grid">
         
-        <div class="skill-box">
-          <div class="skill-top">
-            <div class="info-icon-box">🤖</div>
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="info-icon">🤖</div>
             <div class="skill-title">ระบบหุ่นยนต์ & IoT</div>
           </div>
           <div class="skill-desc">มีความเข้าใจในระบบหุ่นยนต์ การทำงานของกลไก โครงสร้าง และการเชื่อมต่อเซนเซอร์สั่งงานระบบอัตโนมัติ</div>
-          <span class="skill-pill-tag">#Robotics #IoT</span>
+          <span class="skill-tag">#Robotics #IoT</span>
         </div>
 
-        <div class="skill-box">
-          <div class="skill-top">
-            <div class="info-icon-box">⚙️</div>
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="info-icon">⚙️</div>
             <div class="skill-title">การควบคุม PLC</div>
           </div>
           <div class="skill-desc">สามารถควบคุมและโปรแกรมระบบ Programmable Logic Controller ในการสั่งงานฮาร์ดแวร์ได้อย่างเป็นระบบ</div>
-          <span class="skill-pill-tag">#PLC #Automation</span>
+          <span class="skill-tag">#PLC #Automation</span>
         </div>
 
-        <div class="skill-box">
-          <div class="skill-top">
-            <div class="info-icon-box">🛡️</div>
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="info-icon">🛡️</div>
             <div class="skill-title">AI & Cyber Security</div>
           </div>
           <div class="skill-desc">มีความรู้พื้นฐานการประยุกต์ใช้ปัญญาประดิษฐ์และวิเคราะห์ความปลอดภัยทางไซเบอร์ในระบบคอมพิวเตอร์</div>
-          <span class="skill-pill-tag">#AI #CyberSecurity</span>
+          <span class="skill-tag">#AI #CyberSecurity</span>
         </div>
 
-        <div class="skill-box">
-          <div class="skill-top">
-            <div class="info-icon-box">💻</div>
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="info-icon">💻</div>
             <div class="skill-title">ออกแบบเว็บไซต์ (Web Design)</div>
           </div>
           <div class="skill-desc">มีความสามารถในการออกแบบและจัดวางโครงสร้างเว็บไซต์ให้มีความสวยงาม ทันสมัย และตอบโจทย์การใช้งาน</div>
-          <span class="skill-pill-tag">#UI/UX #WebDev</span>
+          <span class="skill-tag">#UI/UX #WebDev</span>
         </div>
 
-        <div class="skill-box">
-          <div class="skill-top">
-            <div class="info-icon-box">🧠</div>
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="info-icon">🧠</div>
             <div class="skill-title">การแก้ปัญหา & การวางแผน</div>
           </div>
           <div class="skill-desc">มีความสามารถในการวิเคราะห์ปัญหาที่ซับซ้อน จัดลำดับขั้นตอน และแก้ปัญหาเชิงกลยุทธ์ได้อย่างเป็นระบบ</div>
-          <span class="skill-pill-tag">#ProblemSolving</span>
+          <span class="skill-tag">#ProblemSolving</span>
         </div>
 
-        <div class="skill-box">
-          <div class="skill-top">
-            <div class="info-icon-box">📐</div>
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="info-icon">📐</div>
             <div class="skill-title">การสร้างโมเดล 3D</div>
           </div>
           <div class="skill-desc">สามารถขึ้นรูปและดีไซน์โมเดล 3 มิติ สำหรับนำไปใช้ในงานออกแบบ โครงงาน หรือการจำลองชิ้นงาน</div>
-          <span class="skill-pill-tag">#3DModeling</span>
+          <span class="skill-tag">#3DModeling</span>
         </div>
 
       </div>
@@ -597,64 +761,22 @@
 
     <!-- 4. ช่องทางการติดต่อ -->
     <section class="section-block">
-      <div class="section-header">
+      <div class="section-title">
         <span class="icon">🎴</span> ช่องทางการติดต่อ
       </div>
 
       <div class="contact-grid">
         
-        <div class="info-mini-card">
-          <div class="info-icon-box">📞</div>
+        <div class="info-box">
+          <div class="info-icon">📞</div>
           <div>
-            <div class="info-label">เบอร์โทรศัพท์</div>
-            <div class="info-value">0801461560</div>
+            <div class="info-lbl">เบอร์โทรศัพท์</div>
+            <div class="info-val">0801461560</div>
           </div>
         </div>
 
-        <div class="info-mini-card">
-          <div class="info-icon-box">💬</div>
+        <div class="info-box">
+          <div class="info-icon">📷</div>
           <div>
-            <div class="info-label">Instagram</div>
-            <div class="info-value">kla.narakk</div>
-          </div>
-        </div>
-
-        <div class="info-mini-card">
-          <div class="info-icon-box">🌐</div>
-          <div>
-            <div class="info-label">Facebook</div>
-            <div class="info-value">Kla Zx</div>
-          </div>
-        </div>
-
-        <div class="info-mini-card">
-          <div class="info-icon-box">✉️</div>
-          <div>
-            <div class="info-label">Gmail</div>
-            <div class="info-value">tonkla555ps@gmail.com</div>
-          </div>
-        </div>
-
-        <div class="info-mini-card contact-card-full">
-          <div class="info-icon-box">📍</div>
-          <div>
-            <div class="info-label">ที่อยู่ปัจจุบัน</div>
-            <div class="info-value">81/5 หมู่ 5 ต.หนองไผ่แก้ว อ.บ้านบึง จ.ชลบุรี</div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ปุ่ม CTA ทรงแคปซูลด้านล่างสุด -->
-    <div class="bottom-cta">
-      <a href="portfolio.html" class="btn-cta-portfolio">
-        เข้าชมแฟ้มสะสมผลงาน (Portfolio) &rarr;
-      </a>
-    </div>
-
-  </main>
-
-</body>
-</html>
-
+            <div class="info-lbl">Instagram</div>
+            <div class="info-
