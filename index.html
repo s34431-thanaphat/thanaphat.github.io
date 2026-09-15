@@ -1,67 +1,187 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Portfolio</title>
-    <style>
-        body { font-family: sans-serif; margin: 0; padding: 0; background-color: #0f172a; color: #fff; }
-        nav { display: flex; justify-content: space-between; padding: 20px; background: #1e293b; }
-        nav a { color: #fff; text-decoration: none; margin: 0 10px; }
-        .container { max-width: 800px; margin: 40px auto; padding: 20px; text-align: center; }
-        .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 4px solid #38bdf8; }
-        .btn { display: inline-block; padding: 10px 20px; background: #38bdf8; color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 15px; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ธนภัทร แซ่ฟุ้ง | Academic Cover</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #0b0d10;
+      --card-bg: rgba(22, 27, 38, 0.75);
+      --gold-primary: #D4AF37;
+      --gold-light: #F7E7A9;
+      --gold-dark: #A37A17;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --bounce-timing: cubic-bezier(0.34, 1.56, 0.64, 1); /* เอฟเฟกต์สปริงเด้ง */
+    }
 
-        /* --- ใส่ CSS Animation ตรงนี้ --- */
-        @keyframes bounceUp {
-            0% { opacity: 0; transform: translateY(60px); }
-            60% { opacity: 1; transform: translateY(-8px); }
-            80% { transform: translateY(4px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans Thai', sans-serif;
+    }
 
-        .animate-up {
-            opacity: 0;
-            animation: bounceUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
+    body {
+      background-color: var(--bg-color);
+      background: radial-gradient(circle at 50% 20%, #161c24 0%, #0b0d10 85%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
+    }
 
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.3s; }
-        .delay-3 { animation-delay: 0.5s; }
-        .delay-4 { animation-delay: 0.7s; }
-    </style>
+    /* แอนิเมชันลอยเด้งดึ๋ง */
+    @keyframes floatAnimation {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+    }
+
+    .profile-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 480px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      transition: transform 0.4s var(--bounce-timing), border-color 0.3s ease, box-shadow 0.4s ease;
+      animation: floatAnimation 5s ease-in-out infinite;
+    }
+
+    .profile-card:hover {
+      border-color: var(--gold-primary);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.25);
+    }
+
+    /* กรอบรูปภาพทรงกลมลอยเด้ง */
+    .avatar-wrapper {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 1.8rem;
+      padding: 4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      animation: pulseGlow 3s ease-in-out infinite;
+      transition: transform 0.4s var(--bounce-timing);
+    }
+
+    .profile-card:hover .avatar-wrapper {
+      transform: scale(1.08) rotate(3deg);
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .name {
+      font-family: 'Playfair Display', 'Noto Sans Thai', serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFFFFF 0%, #F7E7A9 40%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.4rem;
+    }
+
+    .role {
+      color: var(--gold-primary);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold-light);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: transform 0.3s var(--bounce-timing), background 0.3s ease;
+    }
+
+    .badge:hover {
+      transform: translateY(-4px) scale(1.1);
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--gold-primary);
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .btn-primary {
+      display: block;
+      padding: 0.9rem 1.5rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #D4AF37 0%, #A37A17 100%);
+      color: #0b0d10;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: transform 0.4s var(--bounce-timing), box-shadow 0.3s ease;
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.45);
+    }
+  </style>
 </head>
 <body>
 
-    <nav class="animate-up delay-1">
-        <div><strong>PORTFOLIO</strong></div>
-        <div>
-            <a href="index.html">หน้าแรก</a>
-            <a href="me.html">ข้อมูลส่วนตัว</a>
-            <a href="portfolio.html">แฟ้มสะสมผลงาน</a>
-        </div>
-    </nav>
-
-    <div class="container">
-        <!-- รูปโปรไฟล์เด้งมาก่อน -->
-        <img src="profile.jpg" alt="รูปโปรไฟล์" class="profile-img animate-up delay-2">
-        
-        <!-- ข้อความตามมา -->
-        <div class="animate-up delay-3">
-            <p style="color: #38bdf8;">ACADEMIC PORTFOLIO</p>
-            <h1>สวัสดีครับ ผม [ชื่อ-นามสกุล]</h1>
-            <p>นักเรียนผู้มีความสนใจด้านวิทยาการคอมพิวเตอร์และการพัฒนาซอฟต์แวร์</p>
-        </div>
-
-        <hr style="margin: 30px 0; border-color: #334155;">
-
-        <!-- คำนำ และปุ่มเด้งตามมาเป็นส่วนสุดท้าย -->
-        <div class="animate-up delay-4">
-            <h2>คำนำ (Foreword)</h2>
-            <p>แฟ้มสะสมผลงานเล่มนี้จัดทำขึ้นเพื่อนำเสนอประวัติ ผลงาน และความสามารถ...</p>
-            <a href="me.html" class="btn">เข้าชมข้อมูลส่วนตัว</a>
-        </div>
+  <div class="profile-card">
+    <div class="avatar-wrapper">
+      <img src="profile.jpg" alt="ธนภัทร แซ่ฟุ้ง" class="avatar-img">
     </div>
+
+    <h1 class="name">ธนภัทร แซ่ฟุ้ง</h1>
+    <p class="role">Developer & Tech Enthusiast</p>
+
+    <div class="badges">
+      <span class="badge">IoT Systems</span>
+      <span class="badge">AI & Cyber Security</span>
+      <span class="badge">Web Developer</span>
+    </div>
+
+    <div class="actions">
+      <a href="portfolio.html" class="btn-primary">ชมผลงานทั้งหมด (Portfolio) &rarr;</a>
+    </div>
+  </div>
 
 </body>
 </html>
