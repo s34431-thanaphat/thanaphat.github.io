@@ -12,6 +12,7 @@
     :root {
       --bg-color: #0b0d10;
       --card-bg: rgba(22, 27, 38, 0.75);
+      --card-border: rgba(212, 175, 55, 0.2);
       --gold-primary: #D4AF37;
       --gold-light: #F7E7A9;
       --gold-dark: #A37A17;
@@ -35,7 +36,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 1.5rem 1.5rem 4rem;
+      padding: 1.5rem 1.5rem 5rem;
       overflow-x: hidden;
     }
 
@@ -43,11 +44,6 @@
     @keyframes floatAnimation {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-8px); }
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.25); }
-      50% { box-shadow: 0 0 35px rgba(212, 175, 55, 0.45); }
     }
 
     /* 1. Top Navigation Bar */
@@ -62,7 +58,7 @@
       padding: 0.6rem 1.8rem;
       border-radius: 50px;
       width: 100%;
-      max-width: 900px;
+      max-width: 950px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       transition: border-color 0.3s ease;
     }
@@ -102,42 +98,323 @@
       transform: translateY(-2px);
     }
 
-    /* 2. Container & Header */
+    /* Main Container */
     .container {
       width: 100%;
-      max-width: 900px;
+      max-width: 950px;
       margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
     }
 
-    .header-section {
-      text-align: center;
-      margin-bottom: 3rem;
+    /* Section Component Structure */
+    .section-block {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      transition: transform 0.4s var(--bounce-timing), border-color 0.3s ease;
     }
 
-    .page-title {
-      font-family: 'Playfair Display', 'Noto Sans Thai', serif;
-      font-size: 2.5rem;
+    .section-block:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+
+    .section-header {
+      font-size: 1.3rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #FFFFFF 0%, #F7E7A9 40%, #D4AF37 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.5rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
     }
 
-    .page-subtitle {
-      color: var(--text-muted);
-      font-size: 1rem;
+    .section-header .icon {
+      color: var(--gold-primary);
+      font-size: 1.4rem;
     }
 
-    /* 3. Layout Grid */
-    .about-grid {
+    /* --- SECTION 1: Personal Profile & Target University --- */
+    .profile-grid {
       display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 2rem;
+      grid-template-columns: 280px 1fr;
+      gap: 1.5rem;
     }
 
-    @media (max-width: 768px) {
-      .about-grid {
+    /* Target University Card */
+    .target-uni-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.8rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: space-between;
+      transition: transform 0.4s var(--bounce-timing);
+    }
+
+    .target-uni-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: var(--gold-primary);
+    }
+
+    .uni-badge {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold-light);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .uni-logo {
+      width: 90px;
+      height: 90px;
+      margin: 1.5rem 0;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+    }
+
+    .uni-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .uni-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-uni-detail {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-light);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s var(--bounce-timing);
+    }
+
+    .btn-uni-detail:hover {
+      background: var(--gold-primary);
+      color: #0b0d10;
+      transform: scale(1.05);
+    }
+
+    /* 6 Info Cards Grid */
+    .info-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .info-mini-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: transform 0.3s var(--bounce-timing), border-color 0.3s ease;
+    }
+
+    .info-mini-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    .info-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .info-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .info-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* --- SECTION 2: Education --- */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1rem;
+    }
+
+    .edu-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .gpax-card {
+      background: linear-gradient(135deg, #D4AF37 0%, #A37A17 100%);
+      color: #0b0d10;
+      border-radius: 18px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+      transition: transform 0.3s var(--bounce-timing);
+    }
+
+    .gpax-card:hover {
+      transform: scale(1.03) translateY(-3px);
+    }
+
+    .gpax-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      opacity: 0.9;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .gpax-val {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-top: 0.4rem;
+    }
+
+    /* --- SECTION 3: Special Skills Grid --- */
+    .skills-grid-3d {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .skill-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: transform 0.4s var(--bounce-timing), border-color 0.3s ease;
+    }
+
+    .skill-box:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.06);
+    }
+
+    .skill-top {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .skill-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .skill-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .skill-pill-tag {
+      align-self: flex-start;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold-light);
+      padding: 0.2rem 0.7rem;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-top: auto;
+    }
+
+    /* --- SECTION 4: Contact Channels --- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .contact-card-full {
+      grid-column: span 2;
+    }
+
+    /* CTA Bottom Button */
+    .bottom-cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .btn-cta-portfolio {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2.5rem;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #D4AF37 0%, #A37A17 100%);
+      color: #0b0d10;
+      font-size: 1rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+      transition: transform 0.4s var(--bounce-timing), box-shadow 0.3s ease;
+    }
+
+    .btn-cta-portfolio:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
+    }
+
+    @media (max-width: 820px) {
+      .profile-grid, .edu-grid, .skills-grid-3d, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-card-full {
+        grid-column: span 1;
+      }
+      .info-cards-grid {
         grid-template-columns: 1fr;
       }
       .navbar {
@@ -146,182 +423,11 @@
         border-radius: 25px;
       }
     }
-
-    /* Card Box Design */
-    .card-box {
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      border-radius: 20px;
-      padding: 1.8rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      transition: transform 0.4s var(--bounce-timing), border-color 0.3s ease, box-shadow 0.4s ease;
-    }
-
-    .card-box:hover {
-      transform: translateY(-6px) scale(1.01);
-      border-color: var(--gold-primary);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.2);
-    }
-
-    /* Left Profile Card */
-    .profile-sidebar {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .avatar-ring {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      padding: 5px;
-      background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
-      animation: floatAnimation 5s ease-in-out infinite, pulseGlow 3s ease-in-out infinite;
-      margin-bottom: 1.2rem;
-      transition: transform 0.4s var(--bounce-timing);
-    }
-
-    .avatar-ring:hover {
-      transform: scale(1.08) rotate(3deg);
-    }
-
-    .avatar-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #0d1117;
-    }
-
-    .profile-name {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 0.3rem;
-    }
-
-    .profile-tag {
-      color: var(--gold-primary);
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-
-    .quick-info {
-      width: 100%;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      border-top: 1px solid rgba(212, 175, 55, 0.15);
-      padding-top: 1.2rem;
-    }
-
-    .info-item {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.88rem;
-    }
-
-    .info-label {
-      color: var(--text-muted);
-    }
-
-    .info-value {
-      color: var(--gold-light);
-      font-weight: 600;
-    }
-
-    /* Right Main Content Cards */
-    .main-content {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--gold-primary);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-      padding-bottom: 0.5rem;
-    }
-
-    .bio-text {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    /* Skills Grid */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 0.8rem;
-    }
-
-    .skill-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(212, 175, 55, 0.25);
-      padding: 0.8rem;
-      border-radius: 12px;
-      text-align: center;
-      transition: transform 0.3s var(--bounce-timing), background 0.3s ease;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-4px) scale(1.05);
-      background: rgba(212, 175, 55, 0.12);
-      border-color: var(--gold-primary);
-    }
-
-    .skill-name {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--gold-light);
-    }
-
-    /* Timeline Section */
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-left: 1.2rem;
-      border-left: 2px solid var(--gold-primary);
-    }
-
-    .timeline-date {
-      font-size: 0.78rem;
-      color: var(--gold-primary);
-      font-weight: 600;
-    }
-
-    .timeline-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin: 0.2rem 0;
-    }
-
-    .timeline-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
+  <!-- Navigation Bar -->
   <nav class="navbar">
     <a href="index.html" class="nav-brand">THANAPHAT</a>
     <div class="nav-links">
@@ -331,95 +437,70 @@
     </div>
   </nav>
 
-  <!-- Container -->
-  <div class="container">
+  <main class="container">
     
-    <header class="header-section">
-      <h1 class="page-title">ABOUT ME</h1>
-      <p class="page-subtitle">ประวัติ ข้อมูลส่วนตัว และความสนใจด้านเทคโนโลยี</p>
-    </header>
-
-    <div class="about-grid">
+    <!-- 1. ข้อมูลส่วนตัว + มหาวิทยาลัยที่อยากเข้า -->
+    <div class="profile-grid">
       
-      <!-- Left Sidebar -->
-      <div class="card-box profile-sidebar">
-        <div class="avatar-ring">
-          <img src="profile.jpg" alt="ธนภัทร แซ่ฟุ้ง" class="avatar-img">
+      <!-- Target University Box -->
+      <div class="target-uni-card">
+        <span class="uni-badge">🎓 TARGET UNIVERSITY</span>
+        <img src="https://upload.wikimedia.org/wikipedia/th/1/15/Kmitl.png" alt="KMITL Logo" class="uni-logo">
+        <div>
+          <div class="uni-title">มหาวิทยาลัยที่อยากเข้า</div>
+          <div class="uni-name">สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง (KMITL)</div>
         </div>
-        <h2 class="profile-name">ธนภัทร แซ่ฟุ้ง</h2>
-        <p class="profile-tag">DEK70 Student / Developer</p>
-
-        <div class="quick-info">
-          <div class="info-item">
-            <span class="info-label">สัญชาติ:</span>
-            <span class="info-value">ไทย</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">เป้าหมาย:</span>
-            <span class="info-value">วิศวกรรมศาสตร์ / ไอที</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">สถานะ:</span>
-            <span class="info-value">กำลังศึกษา</span>
-          </div>
-        </div>
+        <a href="portfolio.html" class="btn-uni-detail">📍 คลิกเพื่อดูรายละเอียดคณะ</a>
       </div>
 
-      <!-- Right Main Content -->
-      <div class="main-content">
+      <!-- 6 Info Grid Cards -->
+      <div class="info-cards-grid">
         
-        <!-- Bio Card -->
-        <div class="card-box">
-          <h3 class="section-title">📌 ประวัติโดยย่อ (Biography)</h3>
-          <p class="bio-text">
-            มีความหลงใหลในโลกของเทคโนโลยีตั้งแต่ระบบสมองกลฝังตัว (IoT) การพัฒนาซอฟต์แวร์ ไปจนถึงระบบปัญญาประดิษฐ์ (AI) และความปลอดภัยทางไซเบอร์ (Cyber Security) มุ่งมั่นที่จะศึกษาต่อในระดับอุดมศึกษาเพื่อพัฒนาทักษะเชิงลึก นำความรู้ไปต่อยอดสร้างสรรค์นวัตกรรมใหม่ๆ ในอนาคต
-          </p>
-        </div>
-
-        <!-- Skills Card -->
-        <div class="card-box">
-          <h3 class="section-title">⚡ ทักษะและความสนใจ (Skills & Interests)</h3>
-          <div class="skills-grid">
-            <div class="skill-card">
-              <div class="skill-name">IoT & Sensors</div>
-            </div>
-            <div class="skill-card">
-              <div class="skill-name">AI Basics</div>
-            </div>
-            <div class="skill-card">
-              <div class="skill-name">Cyber Security</div>
-            </div>
-            <div class="skill-card">
-              <div class="skill-name">PLC Systems</div>
-            </div>
-            <div class="skill-card">
-              <div class="skill-name">Web Development</div>
-            </div>
-            <div class="skill-card">
-              <div class="skill-name">Programming</div>
-            </div>
+        <div class="info-mini-card">
+          <div class="info-icon-box">👤</div>
+          <div>
+            <div class="info-label">ชื่อ - นามสกุล</div>
+            <div class="info-value">นายธนภัทร แซ่ฟุ้ง</div>
           </div>
         </div>
 
-        <!-- Experience / Training Card -->
-        <div class="card-box">
-          <h3 class="section-title">🎓 การฝึกอบรมและกิจกรรม (Workshops)</h3>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-date">กรกฎาคม 2569</div>
-              <div class="timeline-title">Workshop AI & Cyber Security [KMITL]</div>
-              <div class="timeline-desc">อบรมปัญญาประดิษฐ์พื้นฐานร่วมกับความปลอดภัยทางไซเบอร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date">กรกฎาคม 2569</div>
-              <div class="timeline-title">Workshop PLC ขั้นพื้นฐาน [KMITL]</div>
-              <div class="timeline-desc">ฝึกอบรมการโปรแกรม Programmable Logic Controller ในงาน K-Engineering World Tour 2026</div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date">สิงหาคม 2568</div>
-              <div class="timeline-title">K-Engineering World Tour and Workshop 2025</div>
-              <div class="timeline-desc">เข้าร่วมกิจกรรมเชิงปฏิบัติการด้านวิศวกรรมศาสตร์ คณะวิศวกรรมศาสตร์ KMITL</div>
-            </div>
+        <div class="info-mini-card">
+          <div class="info-icon-box">😊</div>
+          <div>
+            <div class="info-label">ชื่อเล่น</div>
+            <div class="info-value">ภัทร</div>
+          </div>
+        </div>
+
+        <div class="info-mini-card">
+          <div class="info-icon-box">🎂</div>
+          <div>
+            <div class="info-label">วันเกิด</div>
+            <div class="info-value">16 กุมภาพันธ์ 2552</div>
+          </div>
+        </div>
+
+        <div class="info-mini-card">
+          <div class="info-icon-box">⏳</div>
+          <div>
+            <div class="info-label">อายุ</div>
+            <div class="info-value">17 ปี</div>
+          </div>
+        </div>
+
+        <div class="info-mini-card">
+          <div class="info-icon-box">🚩</div>
+          <div>
+            <div class="info-label">เชื้อชาติ / สัญชาติ</div>
+            <div class="info-value">ไทย</div>
+          </div>
+        </div>
+
+        <div class="info-mini-card">
+          <div class="info-icon-box">☸️</div>
+          <div>
+            <div class="info-label">ศาสนา</div>
+            <div class="info-value">พุทธ</div>
           </div>
         </div>
 
@@ -427,7 +508,153 @@
 
     </div>
 
-  </div>
+    <!-- 2. ประวัติการศึกษา -->
+    <section class="section-block">
+      <div class="section-header">
+        <span class="icon">🎓</span> ประวัติการศึกษา
+      </div>
+      
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="info-icon-box">📚</div>
+          <div>
+            <div class="info-label">สายการเรียน</div>
+            <div class="info-value" style="font-size: 1.1rem;">เตรียมวิทยาการคอมพิวเตอร์และวิศวกรรม</div>
+          </div>
+        </div>
+
+        <div class="gpax-card">
+          <div class="gpax-label">⭐ เกรดเฉลี่ยสะสม (GPAX)</div>
+          <div class="gpax-val">3.68</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ความสามารถพิเศษ -->
+    <section class="section-block">
+      <div class="section-header">
+        <span class="icon">🤖</span> ความสามารถพิเศษ
+      </div>
+
+      <div class="skills-grid-3d">
+        
+        <div class="skill-box">
+          <div class="skill-top">
+            <div class="info-icon-box">🤖</div>
+            <div class="skill-title">ระบบหุ่นยนต์ & IoT</div>
+          </div>
+          <div class="skill-desc">มีความเข้าใจในระบบหุ่นยนต์ การทำงานของกลไก โครงสร้าง และการเชื่อมต่อเซนเซอร์สั่งงานระบบอัตโนมัติ</div>
+          <span class="skill-pill-tag">#Robotics #IoT</span>
+        </div>
+
+        <div class="skill-box">
+          <div class="skill-top">
+            <div class="info-icon-box">⚙️</div>
+            <div class="skill-title">การควบคุม PLC</div>
+          </div>
+          <div class="skill-desc">สามารถควบคุมและโปรแกรมระบบ Programmable Logic Controller ในการสั่งงานฮาร์ดแวร์ได้อย่างเป็นระบบ</div>
+          <span class="skill-pill-tag">#PLC #Automation</span>
+        </div>
+
+        <div class="skill-box">
+          <div class="skill-top">
+            <div class="info-icon-box">🛡️</div>
+            <div class="skill-title">AI & Cyber Security</div>
+          </div>
+          <div class="skill-desc">มีความรู้พื้นฐานการประยุกต์ใช้ปัญญาประดิษฐ์และวิเคราะห์ความปลอดภัยทางไซเบอร์ในระบบคอมพิวเตอร์</div>
+          <span class="skill-pill-tag">#AI #CyberSecurity</span>
+        </div>
+
+        <div class="skill-box">
+          <div class="skill-top">
+            <div class="info-icon-box">💻</div>
+            <div class="skill-title">ออกแบบเว็บไซต์ (Web Design)</div>
+          </div>
+          <div class="skill-desc">มีความสามารถในการออกแบบและจัดวางโครงสร้างเว็บไซต์ให้มีความสวยงาม ทันสมัย และตอบโจทย์การใช้งาน</div>
+          <span class="skill-pill-tag">#UI/UX #WebDev</span>
+        </div>
+
+        <div class="skill-box">
+          <div class="skill-top">
+            <div class="info-icon-box">🧠</div>
+            <div class="skill-title">การแก้ปัญหา & การวางแผน</div>
+          </div>
+          <div class="skill-desc">มีความสามารถในการวิเคราะห์ปัญหาที่ซับซ้อน จัดลำดับขั้นตอน และแก้ปัญหาเชิงกลยุทธ์ได้อย่างเป็นระบบ</div>
+          <span class="skill-pill-tag">#ProblemSolving</span>
+        </div>
+
+        <div class="skill-box">
+          <div class="skill-top">
+            <div class="info-icon-box">📐</div>
+            <div class="skill-title">การสร้างโมเดล 3D</div>
+          </div>
+          <div class="skill-desc">สามารถขึ้นรูปและดีไซน์โมเดล 3 มิติ สำหรับนำไปใช้ในงานออกแบบ โครงงาน หรือการจำลองชิ้นงาน</div>
+          <span class="skill-pill-tag">#3DModeling</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. ช่องทางการติดต่อ -->
+    <section class="section-block">
+      <div class="section-header">
+        <span class="icon">🎴</span> ช่องทางการติดต่อ
+      </div>
+
+      <div class="contact-grid">
+        
+        <div class="info-mini-card">
+          <div class="info-icon-box">📞</div>
+          <div>
+            <div class="info-label">เบอร์โทรศัพท์</div>
+            <div class="info-value">097-151-2382</div>
+          </div>
+        </div>
+
+        <div class="info-mini-card">
+          <div class="info-icon-box">💬</div>
+          <div>
+            <div class="info-label">ID Line</div>
+            <div class="info-value">0971512382</div>
+          </div>
+        </div>
+
+        <div class="info-mini-card">
+          <div class="info-icon-box">🌐</div>
+          <div>
+            <div class="info-label">Facebook</div>
+            <div class="info-value">ธนภัทร แซ่ฟุ้ง</div>
+          </div>
+        </div>
+
+        <div class="info-mini-card">
+          <div class="info-icon-box">✉️</div>
+          <div>
+            <div class="info-label">Gmail</div>
+            <div class="info-value">thanaphat.saefung@gmail.com</div>
+          </div>
+        </div>
+
+        <div class="info-mini-card contact-card-full">
+          <div class="info-icon-box">📍</div>
+          <div>
+            <div class="info-label">ที่อยู่ปัจจุบัน</div>
+            <div class="info-value">133/1 หมู่ 1 ต.มาบไผ่ อ.บ้านบึง จ.ชลบุรี</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ปุ่ม CTA ทรงแคปซูลด้านล่างสุด -->
+    <div class="bottom-cta">
+      <a href="portfolio.html" class="btn-cta-portfolio">
+        เข้าชมแฟ้มสะสมผลงาน (Portfolio) &rarr;
+      </a>
+    </div>
+
+  </main>
 
 </body>
 </html>
+
