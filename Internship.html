@@ -1,1 +1,554 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ประวัติการฝึกงาน | ธนภัทร แซ่ฟุ้ง</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #0b0d10;
+      --card-bg: rgba(22, 27, 38, 0.85);
+      --card-border: rgba(212, 175, 55, 0.25);
+      --gold-primary: #D4AF37;
+      --gold-light: #F7E7A9;
+      --gold-dark: #A37A17;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --bounce-timing: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans Thai', sans-serif;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      background-color: var(--bg-color);
+      background: radial-gradient(circle at 50% 20%, #161c24 0%, #0b0d10 85%);
+      color: var(--text-main);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(16px);
+      padding: 0.6rem 1.8rem;
+      border-radius: 50px;
+      width: 100%;
+      max-width: 950px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: border-color 0.3s ease;
+      z-index: 100;
+    }
+
+    .navbar:hover {
+      border-color: var(--gold-primary);
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: 1.5px;
+      color: var(--gold-primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-item {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.45rem 0.95rem;
+      border-radius: 20px;
+      transition: all 0.3s var(--bounce-timing);
+    }
+
+    .nav-item:hover, .nav-item.active {
+      color: var(--gold-light);
+      background: rgba(212, 175, 55, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Main Container */
+    .main-wrapper {
+      width: 100%;
+      max-width: 950px;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .header-section {
+      text-align: center;
+    }
+
+    .header-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .header-title .icon {
+      color: var(--gold-primary);
+    }
+
+    .header-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    /* Internship Timeline & Cards */
+    .internship-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .internship-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 1.8rem;
+      backdrop-filter: blur(16px);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 1.8rem;
+      transition: all 0.3s var(--bounce-timing);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .internship-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-primary);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+    }
+
+    .intern-img-box {
+      width: 100%;
+      height: 200px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #11151c;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .intern-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .intern-img-box:hover .intern-img {
+      transform: scale(1.05);
+    }
+
+    .img-hover-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .intern-img-box:hover .img-hover-overlay {
+      opacity: 1;
+    }
+
+    .intern-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .intern-badge {
+      display: inline-block;
+      align-self: flex-start;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-light);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+    }
+
+    .intern-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+    }
+
+    .intern-org {
+      font-size: 0.95rem;
+      color: var(--gold-primary);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .intern-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .intern-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Skills Highlight Section */
+    .skills-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 2rem;
+      backdrop-filter: blur(16px);
+    }
+
+    .skills-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--gold-light);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 16px;
+      padding: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .skill-card:hover {
+      border-color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.08);
+    }
+
+    .skill-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+    }
+
+    .skill-detail {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* POPUP LIGHTBOX MODAL */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      padding: 1rem;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-container {
+      background: rgba(22, 27, 38, 0.95);
+      border: 1px solid var(--gold-primary);
+      color: var(--text-main);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 700px;
+      padding: 1.8rem;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      transform: translateY(20px) scale(0.95);
+      transition: all 0.3s var(--bounce-timing);
+    }
+
+    .modal-overlay.active .modal-container {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--gold-light);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--gold-primary);
+      color: #0b0d10;
+      transform: rotate(90deg);
+    }
+
+    .modal-preview-img {
+      width: 100%;
+      max-height: 450px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #000;
+      margin-top: 1rem;
+      border: 1px solid var(--card-border);
+    }
+
+    /* Footer & Scroll Top */
+    .site-footer {
+      margin-top: 3rem;
+      width: 100%;
+      max-width: 950px;
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.15);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 0.8rem;
+        border-radius: 25px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .internship-card {
+        grid-template-columns: 1fr;
+      }
+      .intern-img-box {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">THANAPHAT</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-item">🏠 หน้าแรก</a>
+      <a href="about.html" class="nav-item">👤 ข้อมูลส่วนตัว</a>
+      <a href="internship.html" class="nav-item active">💼 การฝึกงาน</a>
+      <a href="portfolio.html" class="nav-item">📁 แฟ้มสะสมผลงาน</a>
+    </div>
+  </nav>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-wrapper">
+    
+    <!-- Header -->
+    <div class="header-section">
+      <h1 class="header-title"><span class="icon">💼</span> ประวัติประสบการณ์การฝึกงาน</h1>
+      <p class="header-subtitle">ประสบการณ์การทำงานจริง ณ เทศบาลตำบลหนองไผ่แก้ว ในโครงการจ้างนักเรียน นักศึกษา</p>
+    </div>
+
+    <!-- Internship Timeline List -->
+    <div class="internship-list">
+      
+      <!-- Internship Item 1 -->
+      <div class="internship-card">
+        <div class="intern-img-box" onclick="openLightbox('IMG_20260917_205156.jpg', 'ฝึกงานเทศบาลตำบลหนองไผ่แก้ว ปีงบประมาณ 2569')">
+          <img src="IMG_20260917_205156.jpg" alt="ใบรับรองการฝึกงาน 2569" class="intern-img" onerror="this.src='cert1.jpg'">
+          <div class="img-hover-overlay">🔍 คลิกดูใบรับรองขยายใหญ่</div>
+        </div>
+        <div class="intern-info">
+          <span class="intern-badge">ปีงบประมาณ 2569</span>
+          <h2 class="intern-title">นักศึกษาฝึกงาน โครงการจ้างนักเรียน นักศึกษา ปฏิบัติงานช่วงปิดภาคเรียน</h2>
+          <div class="intern-org">🏛️ เทศบาลตำบลหนองไผ่แก้ว อำเภอบ้านบึง จังหวัดชลบุรี</div>
+          <div class="intern-date">📅 ผ่านการฝึกงานสำเร็จ ณ วันที่ 24 เมษายน 2569</div>
+          <p class="intern-desc">
+            ปฏิบัติงานช่วยเหลือเจ้าหน้าที่ในฝ่ายงานบริหารทั่วไป งานจัดทำและจัดเก็บเอกสารสารบรรณ 
+            การประสานงานภายในหน่วยงานราชการท้องถิ่น และการอำนวยความสะดวกให้บริการประชาชนที่มาติดต่อราชการ
+          </p>
+        </div>
+      </div>
+
+      <!-- Internship Item 2 -->
+      <div class="internship-card">
+        <div class="intern-img-box" onclick="openLightbox('IMG_20260917_205137.jpg', 'ฝึกงานเทศบาลตำบลหนองไผ่แก้ว ปีงบประมาณ 2568')">
+          <img src="IMG_20260917_205137.jpg" alt="ใบรับรองการฝึกงาน 2568" class="intern-img" onerror="this.src='cert1.jpg'">
+          <div class="img-hover-overlay">🔍 คลิกดูใบรับรองขยายใหญ่</div>
+        </div>
+        <div class="intern-info">
+          <span class="intern-badge">ปีงบประมาณ 2568</span>
+          <h2 class="intern-title">นักศึกษาฝึกงาน โครงการจ้างนักเรียน นักศึกษา ปฏิบัติงานช่วงปิดภาคเรียน</h2>
+          <div class="intern-org">🏛️ เทศบาลตำบลหนองไผ่แก้ว อำเภอบ้านบึง จังหวัดชลบุรี</div>
+          <div class="intern-date">📅 ผ่านการฝึกงานสำเร็จ ณ วันที่ 25 เมษายน 2568</div>
+          <p class="intern-desc">
+            เข้าร่วมการฝึกงานเพื่อเรียนรู้ระบบการทำงานในองค์กรปกครองส่วนท้องถิ่น ช่วยเหลือภารกิจสำนักงาน 
+            พัฒนาทักษะการทำงานร่วมกับผู้อื่น สร้างระเบียบวินัยและความรับผิดชอบในการทำงานจริง
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Skills Gained Section -->
+    <div class="skills-section">
+      <h3 class="skills-title">🌟 ทักษะและสมรรถนะที่ได้รับการพัฒนาจากการฝึกงาน</h3>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🤝</div>
+          <div class="skill-name">การประสานงาน & ทำงานทีม</div>
+          <div class="skill-detail">สื่อสารและร่วมมือกับเจ้าหน้าที่เทศบาลในการดำเนินงานสำนักงานอย่างมีประสิทธิภาพ</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📁</div>
+          <div class="skill-name">งานสารบรรณ & จัดเก็บเอกสาร</div>
+          <div class="skill-detail">เรียนรู้การคัดแยก จัดเรียง และดูแลเอกสารราชการอย่างเป็นระบบและถูกต้อง</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🗣️</div>
+          <div class="skill-name">การบริการประชาชน</div>
+          <div class="skill-detail">ฝึกฝนทักษะการต้อนรับ ให้ข้อมูลอย่างสุภาพ และช่วยเหลือประชาชนที่มาติดต่อราชการ</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">⏱️</div>
+          <div class="skill-name">ความรับผิดชอบ & ตรงต่อเวลา</div>
+          <div class="skill-detail">สร้างระเบียบวินัยในการทำงาน การตรงต่อเวลา และความใส่ใจในงานที่ได้รับมอบหมาย</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- POPUP LIGHTBOX MODAL -->
+  <div class="modal-overlay" id="imgModal" onclick="closeLightboxOnOutside(event)">
+    <div class="modal-container">
+      <button type="button" class="modal-close-btn" onclick="closeLightbox()">&times;</button>
+      <h3 id="mTitle" style="color:#fff; font-size:1.1rem; margin-bottom:0.5rem;">ภาพใบรับรองการฝึกงาน</h3>
+      <img id="mImg" src="" alt="Certificate" class="modal-preview-img" onerror="this.src='cert1.jpg'">
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <p>© 2026 <strong>ธนภัทร แซ่ฟุ้ง (Thanaphat Saefung)</strong> — ประวัติการฝึกงาน</p>
+  </footer>
+
+  <script>
+    function openLightbox(imgSrc, title) {
+      document.getElementById('mImg').src = imgSrc;
+      document.getElementById('mTitle').innerText = title;
+      const modal = document.getElementById('imgModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('imgModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeLightboxOnOutside(event) {
+      if (event.target.classList.contains('modal-overlay')) {
+        closeLightbox();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
