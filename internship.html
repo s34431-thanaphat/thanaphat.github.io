@@ -271,7 +271,52 @@
       line-height: 1.6;
     }
 
-    /* Photo Gallery Grid (Pure Image Cards) */
+    /* Featured Large Image Card (ด้านบนสุด) */
+    .featured-gallery-item {
+      position: relative;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s var(--bounce-timing), border-color 0.3s ease;
+    }
+
+    .featured-gallery-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-primary);
+    }
+
+    .featured-gallery-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .featured-caption {
+      padding: 1.2rem 1.4rem;
+      background: rgba(11, 13, 16, 0.85);
+      backdrop-filter: blur(8px);
+    }
+
+    .featured-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--gold-light);
+      margin-bottom: 0.3rem;
+    }
+
+    .featured-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Photo Gallery Grid (6 รูปด้านล่าง) */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -361,6 +406,9 @@
       .intern-header {
         flex-direction: column;
         align-items: flex-start;
+      }
+      .featured-gallery-img {
+        height: 240px;
       }
       .gallery-img {
         height: 190px;
@@ -464,12 +512,24 @@
       </div>
     </section>
 
-    <!-- Photo Gallery Section (Pure Image Grid) -->
+    <!-- Photo Gallery Section -->
     <section class="section-block">
       <div class="section-title">
         <span class="icon">🖼️</span> ภาพบรรยากาศการฝึกงาน
       </div>
 
+      <!-- ช่องรูปภาพใหญ่พิเศษด้านบน (Featured Card) -->
+      <div class="featured-gallery-item">
+        <img src="1789365662650.jpg" alt="ภาพบรรยากาศการปฏิบัติงานหลัก" class="featured-gallery-img">
+        <div class="featured-caption">
+          <div class="featured-title">🌟 ภาพบรรยากาศการปฏิบัติงานรวม</div>
+          <div class="featured-desc">
+            ภาพรวมการปฏิบัติงานประจำวัน การทำงานร่วมกับคณะผู้บริหาร เจ้าหน้าที่ และทีมงานฝ่ายบริหารทั่วไป ณ เทศบาลตำบลหนองไผ่แก้ว
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid แสดง 6 รูปด้านล่าง -->
       <div class="gallery-grid">
         <div class="gallery-item">
           <img src="1789102185523.jpg" alt="ภาพบรรยากาศการฝึกงาน 1" class="gallery-img">
