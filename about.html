@@ -313,7 +313,135 @@
       margin-top: 0.3rem;
     }
 
-    /* --- SECTION 3: Skills --- */
+    /* --- SECTION 3: Internship / Work Experience --- */
+    .internship-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      width: 100%;
+    }
+
+    .internship-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 1.5rem;
+      transition: transform 0.3s var(--bounce-timing), border-color 0.3s ease;
+    }
+
+    .internship-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.03);
+    }
+
+    .internship-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      margin-bottom: 1rem;
+    }
+
+    .internship-role-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .internship-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .internship-role {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .internship-org {
+      font-size: 0.88rem;
+      color: var(--gold-primary);
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    .internship-period {
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold-light);
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .internship-desc {
+      font-size: 0.88rem;
+      color: var(--text-main);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .internship-responsibilities {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .res-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 0.6rem;
+    }
+
+    .res-list {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .res-list li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      position: relative;
+      padding-left: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .res-list li::before {
+      content: "•";
+      color: var(--gold-primary);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .internship-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* --- SECTION 4: Skills --- */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -368,7 +496,7 @@
       margin-top: auto;
     }
 
-    /* --- SECTION 4: Contact Channels --- */
+    /* --- SECTION 5: Contact Channels --- */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -409,7 +537,7 @@
       box-shadow: 0 12px 30px rgba(212, 175, 55, 0.45);
     }
 
-    /* --- POPUP MODAL STYLES (MATCHING IMAGE 2 & 3) --- */
+    /* --- POPUP MODAL STYLES --- */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -590,17 +718,22 @@
       .modal-container {
         padding: 1.5rem 1.2rem;
       }
+      .internship-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
 
-<!-- Navigation Bar -->
+  <!-- Navigation Bar -->
   <nav class="navbar">
-  <a href="index.html" class="nav-brand">THANAPHAT</a>
+    <a href="index.html" class="nav-brand">THANAPHAT</a>
     <div class="nav-links">
       <a href="index.html" class="nav-item">🏠 หน้าแรก</a>
-      <a href="about.html" class="nav-item">👤 ข้อมูลส่วนตัว</a>
+      <a href="about.html" class="nav-item active">👤 ข้อมูลส่วนตัว</a>
+      <a href="internship.html" class="nav-item">💼 ประวัติการฝึกงาน</a>
       <a href="portfolio.html" class="nav-item">📁 แฟ้มสะสมผลงาน</a>
     </div>
   </nav>
@@ -699,7 +832,53 @@
       </div>
     </section>
 
-    <!-- 3. ความสามารถพิเศษ -->
+    <!-- 3. ประวัติการฝึกงาน & ประสบการณ์ทำงาน -->
+    <section class="section-block">
+      <div class="section-title">
+        <span class="icon">💼</span> ประวัติการฝึกงาน & ประสบการณ์ทำงาน
+      </div>
+
+      <div class="internship-container">
+        <div class="internship-card">
+          <div class="internship-header">
+            <div class="internship-role-group">
+              <div class="internship-icon">🏛️</div>
+              <div>
+                <div class="internship-role">ผู้ช่วยเจ้าหน้าที่งานบริหารทั่วไป & งานสารบรรณ</div>
+                <div class="internship-org">เทศบาลตำบลหนองไผ่แก้ว (โครงการจ้างนักเรียน/นักศึกษา)</div>
+              </div>
+            </div>
+            <span class="internship-period">📅 ปีงบประมาณ 2568 - 2569 (2 ปีติดต่อกัน)</span>
+          </div>
+
+          <div class="internship-details">
+            <div class="internship-desc">
+              ปฏิบัติงานในโครงการจ้างนักเรียน นักศึกษาเข้าทำงานในหน่วยงานราชการท้องถิ่น ณ เทศบาลตำบลหนองไผ่แก้ว ต่อเนื่องเป็นเวลา 2 ปีงบประมาณ โดยได้รับมอบหมายความรับผิดชอบในด้านการบริหารจัดการงานเอกสาร การประสานงาน และการอำนวยความสะดวกแก่ประชาชน
+            </div>
+
+            <div class="internship-responsibilities">
+              <div class="res-title">📌 ขอบเขตหน้าที่และความรับผิดชอบหลัก:</div>
+              <ul class="res-list">
+                <li>ช่วยเหลือเจ้าหน้าที่ฝ่ายบริหารทั่วไปในการลงทะเบียน จัดเก็บ ค้นหา และเดินเอกสารหนังสือราชการสารบรรณอย่างเป็นระบบ</li>
+                <li>ประสานงานภายในหน่วยงานราชการท้องถิ่นเพื่อสนับสนุนการดำเนินงานของฝ่ายต่างๆ ให้เป็นไปอย่างราบรื่น</li>
+                <li>ต้อนรับ ให้บริการ และอำนวยความสะดวกแก่ประชาชนที่มาติดต่อราชการด้วยจิตบริการ (Service Mind)</li>
+                <li>ช่วยจัดเตรียมสถานที่ เอกสาร และอุปกรณ์ในการจัดประชุม/กิจกรรมโครงการต่างๆ ของเทศบาล</li>
+              </ul>
+            </div>
+
+            <div class="internship-skills">
+              <span class="skill-tag">#งานสารบรรณ</span>
+              <span class="skill-tag">#งานบริการประชาชน</span>
+              <span class="skill-tag">#การประสานงาน</span>
+              <span class="skill-tag">#การทำงานเป็นทีม</span>
+              <span class="skill-tag">#ความรับผิดชอบ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ความสามารถพิเศษ -->
     <section class="section-block">
       <div class="section-title">
         <span class="icon">🤖</span> ความสามารถพิเศษ
@@ -764,7 +943,7 @@
       </div>
     </section>
 
-    <!-- 4. ช่องทางการติดต่อ -->
+    <!-- 5. ช่องทางการติดต่อ -->
     <section class="section-block">
       <div class="section-title">
         <span class="icon">🎴</span> ช่องทางการติดต่อ
