@@ -394,6 +394,7 @@
     <div class="nav-links">
       <a href="index.html" class="nav-item">🏠 หน้าแรก</a>
       <a href="about.html" class="nav-item">👤 ข้อมูลส่วนตัว</a>
+      <a href="internship.html" class="nav-item">💼 ประวัติการฝึกงาน</a>
       <a href="portfolio.html" class="nav-item active">📁 แฟ้มสะสมผลงาน</a>
     </div>
   </nav>
@@ -574,7 +575,7 @@
         </div>
       </div>
 
-      <!-- Card 13 (เพิ่มใหม่) -->
+      <!-- Card 13 -->
       <div class="portfolio-card" data-category="activity" onclick="openModal(13)">
         <div class="card-img-wrapper">
           <img src="Screenshot_2026-09-17-23-06-11-090_com.google.android.apps.docs-edit.jpg" alt="สัมมนาพัฒนาเทคโนโลยี" class="card-img">
@@ -705,14 +706,11 @@
 
       filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-          // 1. สลับไฮไลต์ปุ่ม Active
           filterBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
 
-          // 2. ดึงค่าหมวดหมู่ที่ต้องการกรอง
           const filterValue = btn.getAttribute('data-filter');
 
-          // 3. กรองการแสดงผลการ์ด
           cards.forEach(card => {
             const cardCategory = card.getAttribute('data-category');
             if (filterValue === 'all' || cardCategory === filterValue) {
