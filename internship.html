@@ -273,9 +273,8 @@
 
     /* Photo Gallery */
     .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.2rem;
+      display: flex;
+      justify-content: center;
     }
 
     .gallery-item {
@@ -286,6 +285,8 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      max-width: 600px;
+      width: 100%;
       transition: transform 0.3s var(--bounce-timing), border-color 0.3s ease;
     }
 
@@ -296,7 +297,7 @@
 
     .gallery-img {
       width: 100%;
-      height: 240px;
+      height: 300px;
       object-fit: cover;
       display: block;
       border-bottom: 1px solid rgba(212, 175, 55, 0.15);
@@ -370,7 +371,7 @@
 
     /* Responsive Breakdown */
     @media (max-width: 768px) {
-      .tasks-grid, .gallery-grid {
+      .tasks-grid {
         grid-template-columns: 1fr;
       }
       .navbar {
@@ -383,7 +384,7 @@
         align-items: flex-start;
       }
       .gallery-img {
-        height: 200px;
+        height: 220px;
       }
     }
   </style>
@@ -487,12 +488,10 @@
     <!-- Photo Gallery Section -->
     <section class="section-block">
       <div class="section-title">
-        <span class="icon">🖼️</span> ภาพบรรยากาศการฝึกงาน & พิธีรับมอบวุฒิบัตร
+        <span class="icon">🖼️</span> ภาพบรรยากาศการฝึกงาน
       </div>
 
       <div class="gallery-grid">
-        
-        <!-- Image 1 -->
         <div class="gallery-item">
           <img src="1789365662650.jpg" alt="ถ่ายภาพร่วมกับคณะผู้บริหารและเจ้าหน้าที่ เทศบาลตำบลหนองไผ่แก้ว" class="gallery-img">
           <div class="gallery-caption">
@@ -502,18 +501,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Image 2 -->
-        <div class="gallery-item">
-          <img src="image_80eb04.jpg" alt="พิธีรับมอบหนังสือรับรองการผ่านงานและวุฒิบัตร" class="gallery-img">
-          <div class="gallery-caption">
-            <div class="gallery-title">พิธีรับมอบเกียรติบัตร & หนังสือรับรองผ่านงาน</div>
-            <div class="gallery-desc">
-              รับมอบเกียรติบัตรและหนังสือรับรองการปฏิบัติงานปิดโครงการ จากผู้บริหารเทศบาลตำบลหนองไผ่แก้ว พร้อมคณะเจ้าหน้าที่ร่วมแสดงความยินดี
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
