@@ -178,7 +178,39 @@
       margin-bottom: 2.5rem;
     }
 
+    /* Action Buttons Group */
+    .btn-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
     .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2.2rem;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #D4AF37 0%, #A37A17 100%);
+      border: 1px solid var(--gold-primary);
+      color: #0b0d10;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.4s var(--bounce-timing), background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+    }
+
+    .btn-pill:hover {
+      background: linear-gradient(135deg, #F7E7A9 0%, #D4AF37 100%);
+      color: #0b0d10;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(212, 175, 55, 0.45);
+    }
+
+    .btn-pill-outline {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -194,11 +226,11 @@
       box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
     }
 
-    .btn-pill:hover {
-      background: linear-gradient(135deg, #D4AF37 0%, #A37A17 100%);
-      color: #0b0d10;
+    .btn-pill-outline:hover {
+      background: rgba(212, 175, 55, 0.2);
+      color: #ffffff;
       transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 12px 25px rgba(212, 175, 55, 0.4);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
     }
 
     @media (max-width: 600px) {
@@ -209,6 +241,14 @@
       }
       .hero-title {
         font-size: 1.8rem;
+      }
+      .btn-group {
+        flex-direction: column;
+        width: 100%;
+      }
+      .btn-pill, .btn-pill-outline {
+        width: 100%;
+        justify-content: center;
       }
     }
   </style>
@@ -241,11 +281,16 @@
       นักเรียนผู้มีความสนใจด้าน Internet of Things (IoT), ปัญญาประดิษฐ์ (AI), ความปลอดภัยทางไซเบอร์ และวิทยาการคอมพิวเตอร์ เตรียมความพร้อมสำหรับการศึกษาต่อระดับอุดมศึกษา
     </p>
 
-    <a href="portfolio.html" class="btn-pill">
-      ชมแฟ้มสะสมผลงาน (Portfolio) &darr;
-    </a>
+    <!-- Action Buttons -->
+    <div class="btn-group">
+      <a href="about.html" class="btn-pill">
+        👤 ข้อมูลส่วนตัว (About Me) &rarr;
+      </a>
+      <a href="portfolio.html" class="btn-pill-outline">
+        📁 ชมแฟ้มสะสมผลงาน (Portfolio) &darr;
+      </a>
+    </div>
   </main>
 
 </body>
 </html>
-
