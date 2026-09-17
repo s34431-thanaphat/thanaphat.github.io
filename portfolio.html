@@ -11,7 +11,7 @@
   <style>
     :root {
       --bg-color: #0b0d10;
-      --card-bg: rgba(22, 27, 38, 0.85);
+      --card-bg: rgba(22, 27, 38, 0.8);
       --card-border: rgba(212, 175, 55, 0.25);
       --gold-primary: #D4AF37;
       --gold-light: #F7E7A9;
@@ -35,14 +35,13 @@
       background: radial-gradient(circle at 50% 20%, #161c24 0%, #0b0d10 85%);
       color: var(--text-main);
       overflow-x: hidden;
-      scroll-behavior: smooth;
     }
 
     body {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 1.5rem 1rem 3rem;
+      padding: 1.5rem 1rem 5rem;
     }
 
     /* Navigation Bar */
@@ -60,7 +59,6 @@
       max-width: 950px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       transition: border-color 0.3s ease;
-      z-index: 100;
     }
 
     .navbar:hover {
@@ -114,7 +112,7 @@
     }
 
     .header-title {
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 800;
       color: #ffffff;
       display: flex;
@@ -133,54 +131,13 @@
       margin-top: 0.4rem;
     }
 
-    /* Search & Filter Section */
-    .controls-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .search-box {
-      position: relative;
-      width: 100%;
-      max-width: 500px;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 0.75rem 1.2rem 0.75rem 2.8rem;
-      background: rgba(22, 27, 38, 0.9);
-      border: 1px solid var(--card-border);
-      border-radius: 30px;
-      color: var(--text-main);
-      font-size: 0.9rem;
-      outline: none;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-
-    .search-input:focus {
-      border-color: var(--gold-primary);
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--gold-primary);
-      font-size: 1rem;
-      pointer-events: none;
-    }
-
+    /* Filter Buttons */
     .filter-bar {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 0.6rem;
+      margin-bottom: 1rem;
     }
 
     .filter-btn {
@@ -298,26 +255,6 @@
       gap: 0.4rem;
     }
 
-    /* Empty Search State */
-    .empty-state {
-      display: none;
-      text-align: center;
-      padding: 3rem 1rem;
-      background: var(--card-bg);
-      border: 1px dashed var(--card-border);
-      border-radius: 20px;
-      color: var(--text-muted);
-    }
-
-    .empty-state.active {
-      display: block;
-    }
-
-    .empty-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
     /* POPUP MODAL STYLES */
     .modal-overlay {
       position: fixed;
@@ -325,7 +262,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.88);
+      background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
@@ -379,7 +316,6 @@
       align-items: center;
       justify-content: center;
       transition: all 0.2s ease;
-      z-index: 2;
     }
 
     .modal-close-btn:hover {
@@ -433,88 +369,6 @@
       padding: 1rem;
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.05);
-      margin-bottom: 1.2rem;
-    }
-
-    /* Modal Navigation Controls */
-    .modal-nav-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.5rem;
-      border-top: 1px solid rgba(212, 175, 55, 0.15);
-      padding-top: 1rem;
-    }
-
-    .modal-nav-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      padding: 0.45rem 1rem;
-      border-radius: 15px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .modal-nav-btn:hover {
-      background: var(--gold-primary);
-      color: #0b0d10;
-      border-color: var(--gold-primary);
-    }
-
-    /* Footer & Scroll to Top */
-    .site-footer {
-      margin-top: 4rem;
-      width: 100%;
-      max-width: 950px;
-      text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(212, 175, 55, 0.15);
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-
-    .site-footer a {
-      color: var(--gold-light);
-      text-decoration: none;
-    }
-
-    .scroll-top-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: var(--card-bg);
-      border: 1px solid var(--gold-primary);
-      color: var(--gold-light);
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 90;
-    }
-
-    .scroll-top-btn.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .scroll-top-btn:hover {
-      background: var(--gold-primary);
-      color: #0b0d10;
-      transform: translateY(-3px);
     }
 
     @media (max-width: 600px) {
@@ -550,36 +404,24 @@
     <!-- Header -->
     <div class="header-section">
       <h1 class="header-title"><span class="icon">🏆</span> ผลงานและเกียรติบัตร</h1>
-      <p class="header-subtitle">รวบรวมเกียรติบัตร การแข่งขัน การฝึกงาน โครงงาน และกิจกรรมเข้าร่วมอบรมต่างๆ</p>
+      <p class="header-subtitle">รวบรวมเกียรติบัตร การแข่งขัน การฝึกงาน และกิจกรรมการเข้าร่วมอบรมต่างๆ</p>
     </div>
 
-    <!-- Search & Filter Controls -->
-    <div class="controls-wrapper">
-      
-      <!-- Live Search Bar -->
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" class="search-input" placeholder="พิมพ์เพื่อค้นหาชื่อผลงาน, เกียรติบัตร, หรือหน่วยงาน...">
-      </div>
-
-      <!-- Filter Buttons -->
-      <div class="filter-bar">
-        <button type="button" class="filter-btn active" data-filter="all">ทั้งหมด</button>
-        <button type="button" class="filter-btn" data-filter="academic">วิชาการ & การแข่งขัน</button>
-        <button type="button" class="filter-btn" data-filter="project">โครงงาน & สิ่งประดิษฐ์</button>
-        <button type="button" class="filter-btn" data-filter="internship">การฝึกงาน</button>
-        <button type="button" class="filter-btn" data-filter="activity">กิจกรรม & การอบรม</button>
-      </div>
-
+    <!-- Filter Buttons -->
+    <div class="filter-bar">
+      <button type="button" class="filter-btn active" data-filter="all">ทั้งหมด</button>
+      <button type="button" class="filter-btn" data-filter="academic">วิชาการ & การแข่งขัน</button>
+      <button type="button" class="filter-btn" data-filter="internship">การฝึกงาน</button>
+      <button type="button" class="filter-btn" data-filter="activity">กิจกรรม & การอบรม</button>
     </div>
 
     <!-- Portfolio Grid -->
     <div class="portfolio-grid" id="portfolioGrid">
       
       <!-- Card 1 -->
-      <div class="portfolio-card" data-id="1" data-category="academic" onclick="openModal(1)">
+      <div class="portfolio-card" data-category="academic" onclick="openModal(1)">
         <div class="card-img-wrapper">
-          <img src="IMG_20260917_205211.jpg" alt="เกียรติบัตรเหรียญเงิน Motion Infographic" class="card-img" onerror="this.src='cert1.jpg'">
+          <img src="IMG_20260917_205211.jpg" alt="เกียรติบัตรเหรียญเงิน Motion Infographic" class="card-img">
           <span class="card-badge">เหรียญเงิน 🥈</span>
         </div>
         <div class="card-body">
@@ -590,9 +432,9 @@
       </div>
 
       <!-- Card 2 -->
-      <div class="portfolio-card" data-id="2" data-category="internship" onclick="openModal(2)">
+      <div class="portfolio-card" data-category="internship" onclick="openModal(2)">
         <div class="card-img-wrapper">
-          <img src="IMG_20260917_205137.jpg" alt="เกียรติบัตรฝึกงานเทศบาล 2568" class="card-img" onerror="this.src='cert1.jpg'">
+          <img src="IMG_20260917_205137.jpg" alt="เกียรติบัตรฝึกงานเทศบาล 2568" class="card-img">
           <span class="card-badge">ฝึกงาน</span>
         </div>
         <div class="card-body">
@@ -603,9 +445,9 @@
       </div>
 
       <!-- Card 3 -->
-      <div class="portfolio-card" data-id="3" data-category="internship" onclick="openModal(3)">
+      <div class="portfolio-card" data-category="internship" onclick="openModal(3)">
         <div class="card-img-wrapper">
-          <img src="IMG_20260917_205156.jpg" alt="เกียรติบัตรฝึกงานเทศบาล 2569" class="card-img" onerror="this.src='cert1.jpg'">
+          <img src="IMG_20260917_205156.jpg" alt="เกียรติบัตรฝึกงานเทศบาล 2569" class="card-img">
           <span class="card-badge">ฝึกงาน</span>
         </div>
         <div class="card-body">
@@ -616,9 +458,9 @@
       </div>
 
       <!-- Card 4 -->
-      <div class="portfolio-card" data-id="4" data-category="activity" onclick="openModal(4)">
+      <div class="portfolio-card" data-category="activity" onclick="openModal(4)">
         <div class="card-img-wrapper">
-          <img src="IMG_20260917_205259.jpg" alt="ตัวแทนประกวดโครงงานห้องเรียนสีขาว" class="card-img" onerror="this.src='cert1.jpg'">
+          <img src="IMG_20260917_205259.jpg" alt="ตัวแทนประกวดโครงงานห้องเรียนสีขาว" class="card-img">
           <span class="card-badge">ตัวแทนนักเรียน</span>
         </div>
         <div class="card-body">
@@ -629,9 +471,9 @@
       </div>
 
       <!-- Card 5 -->
-      <div class="portfolio-card" data-id="5" data-category="activity" onclick="openModal(5)">
+      <div class="portfolio-card" data-category="activity" onclick="openModal(5)">
         <div class="card-img-wrapper">
-          <img src="IMG_20260917_205222.jpg" alt="การอบรมทักษะเผชิญเหตุแผ่นดินไหว" class="card-img" onerror="this.src='cert1.jpg'">
+          <img src="IMG_20260917_205222.jpg" alt="การอบรมทักษะเผชิญเหตุแผ่นดินไหว" class="card-img">
           <span class="card-badge">การอบรม</span>
         </div>
         <div class="card-body">
@@ -642,9 +484,9 @@
       </div>
 
       <!-- Card 6 -->
-      <div class="portfolio-card" data-id="6" data-category="activity" onclick="openModal(6)">
+      <div class="portfolio-card" data-category="activity" onclick="openModal(6)">
         <div class="card-img-wrapper">
-          <img src="IMG_20260917_205415.jpg" alt="อบรมวัยรุ่นยุคใหม่ ใส่ใจสุขภาพจิต" class="card-img" onerror="this.src='cert1.jpg'">
+          <img src="IMG_20260917_205415.jpg" alt="อบรมวัยรุ่นยุคใหม่ ใส่ใจสุขภาพจิต" class="card-img">
           <span class="card-badge">การอบรม</span>
         </div>
         <div class="card-body">
@@ -655,9 +497,9 @@
       </div>
 
       <!-- Card 7 -->
-      <div class="portfolio-card" data-id="7" data-category="academic" onclick="openModal(7)">
+      <div class="portfolio-card" data-category="academic" onclick="openModal(7)">
         <div class="card-img-wrapper">
-          <img src="IMG_20260917_205231.jpg" alt="มหกรรมวิชาการ EEC" class="card-img" onerror="this.src='cert1.jpg'">
+          <img src="IMG_20260917_205231.jpg" alt="มหกรรมวิชาการ EEC" class="card-img">
           <span class="card-badge">วิชาการ</span>
         </div>
         <div class="card-body">
@@ -668,9 +510,9 @@
       </div>
 
       <!-- Card 8 -->
-      <div class="portfolio-card" data-id="8" data-category="activity" onclick="openModal(8)">
+      <div class="portfolio-card" data-category="activity" onclick="openModal(8)">
         <div class="card-img-wrapper">
-          <img src="IMG_20260917_205354.jpg" alt="โครงการอบรมคุณธรรม จริยธรรม" class="card-img" onerror="this.src='cert1.jpg'">
+          <img src="IMG_20260917_205354.jpg" alt="โครงการอบรมคุณธรรม จริยธรรม" class="card-img">
           <span class="card-badge">คุณธรรม</span>
         </div>
         <div class="card-body">
@@ -681,9 +523,9 @@
       </div>
 
       <!-- Card 9 -->
-      <div class="portfolio-card" data-id="9" data-category="activity" onclick="openModal(9)">
+      <div class="portfolio-card" data-category="activity" onclick="openModal(9)">
         <div class="card-img-wrapper">
-          <img src="Screenshot_2026-09-07-13-13-27-182_com.google.android.gm.jpg" alt="Workshop AI และ Cyber Security KMITL" class="card-img" onerror="this.src='cert1.jpg'">
+          <img src="Screenshot_2026-09-07-13-13-27-182_com.google.android.gm.jpg" alt="Workshop AI และ Cyber Security KMITL" class="card-img">
           <span class="card-badge">WORKSHOP</span>
         </div>
         <div class="card-body">
@@ -694,9 +536,9 @@
       </div>
 
       <!-- Card 10 -->
-      <div class="portfolio-card" data-id="10" data-category="activity" onclick="openModal(10)">
+      <div class="portfolio-card" data-category="activity" onclick="openModal(10)">
         <div class="card-img-wrapper">
-          <img src="Screenshot_2026-09-07-13-14-20-779_com.google.android.gm.jpg" alt="Workshop PLC KMITL" class="card-img" onerror="this.src='cert1.jpg'">
+          <img src="Screenshot_2026-09-07-13-14-20-779_com.google.android.gm.jpg" alt="Workshop PLC KMITL" class="card-img">
           <span class="card-badge">WORKSHOP</span>
         </div>
         <div class="card-body">
@@ -707,7 +549,7 @@
       </div>
 
       <!-- Card 11 -->
-      <div class="portfolio-card" data-id="11" data-category="activity" onclick="openModal(11)">
+      <div class="portfolio-card" data-category="activity" onclick="openModal(11)">
         <div class="card-img-wrapper">
           <img src="cert1.jpg" alt="K-Engineering World Tour 2025" class="card-img">
           <span class="card-badge">การอบรม</span>
@@ -720,9 +562,9 @@
       </div>
 
       <!-- Card 12 -->
-      <div class="portfolio-card" data-id="12" data-category="academic" onclick="openModal(12)">
+      <div class="portfolio-card" data-category="academic" onclick="openModal(12)">
         <div class="card-img-wrapper">
-          <img src="Screenshot_2026-09-07-12-54-09-167_com.google.android.apps.docs-edit.jpg" alt="ค่ายยกระดับผลสัมฤทธิ์เทคโนโลยี" class="card-img" onerror="this.src='cert1.jpg'">
+          <img src="Screenshot_2026-09-07-12-54-09-167_com.google.android.apps.docs-edit.jpg" alt="ค่ายยกระดับผลสัมฤทธิ์เทคโนโลยี" class="card-img">
           <span class="card-badge">ค่ายวิชาการ</span>
         </div>
         <div class="card-body">
@@ -732,10 +574,10 @@
         </div>
       </div>
 
-      <!-- Card 13 -->
-      <div class="portfolio-card" data-id="13" data-category="activity" onclick="openModal(13)">
+      <!-- Card 13 (เพิ่มใหม่) -->
+      <div class="portfolio-card" data-category="activity" onclick="openModal(13)">
         <div class="card-img-wrapper">
-          <img src="Screenshot_2026-09-17-23-06-11-090_com.google.android.apps.docs-edit.jpg" alt="สัมมนาพัฒนาเทคโนโลยี" class="card-img" onerror="this.src='cert1.jpg'">
+          <img src="Screenshot_2026-09-17-23-06-11-090_com.google.android.apps.docs-edit.jpg" alt="สัมมนาพัฒนาเทคโนโลยี" class="card-img">
           <span class="card-badge">การสัมมนา</span>
         </div>
         <div class="card-body">
@@ -745,39 +587,6 @@
         </div>
       </div>
 
-      <!-- Card 14 (โครงงาน IoT เพิ่มใหม่) -->
-      <div class="portfolio-card" data-id="14" data-category="project" onclick="openModal(14)">
-        <div class="card-img-wrapper">
-          <img src="cert1.jpg" alt="โครงงาน IoT สมาร์ทฟาร์ม" class="card-img">
-          <span class="card-badge">โครงงาน IoT 🛠️</span>
-        </div>
-        <div class="card-body">
-          <div class="card-title">โครงงานระบบวัดความชื้นในดินและควบคุมการรดน้ำอัตโนมัติ IoT</div>
-          <div class="card-org">การเรียนรู้และพัฒนาอิสระ (Soil Moisture & Blynk Cloud)</div>
-          <div class="card-date">📅 มกราคม 2568</div>
-        </div>
-      </div>
-
-      <!-- Card 15 (Student Techpreneur เพิ่มใหม่) -->
-      <div class="portfolio-card" data-id="15" data-category="project" onclick="openModal(15)">
-        <div class="card-img-wrapper">
-          <img src="cert1.jpg" alt="Student Techpreneur Competition" class="card-img">
-          <span class="card-badge">การแข่งขัน 🚀</span>
-        </div>
-        <div class="card-body">
-          <div class="card-title">การแข่งขัน Student Techpreneur Competition 2026</div>
-          <div class="card-org">โครงการพัฒนาผู้ประกอบการเทคโนโลยีนวัตกรรมรุ่นเยาว์</div>
-          <div class="card-date">📅 สิงหาคม 2569</div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Empty State -->
-    <div class="empty-state" id="emptyState">
-      <div class="empty-icon">🔎</div>
-      <h3>ไม่พบข้อมูลผลงานที่ค้นหา</h3>
-      <p>ลองค้นหาด้วยคำคีย์เวิร์ดอื่น หรือเลือกหมวดหมู่อื่นๆ</p>
     </div>
 
   </div>
@@ -789,25 +598,10 @@
       <span class="modal-detail-badge" id="mBadge">หมวดหมู่</span>
       <div class="modal-detail-title" id="mTitle">หัวข้อผลงาน</div>
       <div class="modal-detail-org" id="mOrg">หน่วยงาน / สถาบัน</div>
-      <img id="mImg" src="" alt="Certificate" class="modal-preview-img" onerror="this.src='cert1.jpg'">
+      <img id="mImg" src="" alt="Certificate" class="modal-preview-img">
       <div class="modal-detail-desc" id="mDesc">รายละเอียดผลงาน</div>
-      
-      <!-- Controls ใน Modal -->
-      <div class="modal-nav-bar">
-        <button type="button" class="modal-nav-btn" onclick="prevModal()">◀ ผลงานก่อนหน้า</button>
-        <span id="mCounter" style="font-size:0.8rem; color:var(--text-muted);">1 / 15</span>
-        <button type="button" class="modal-nav-btn" onclick="nextModal()">ผลงานถัดไป ▶</button>
-      </div>
     </div>
   </div>
-
-  <!-- Scroll To Top Button -->
-  <button type="button" class="scroll-top-btn" id="scrollTopBtn" onclick="scrollToTop()">▲</button>
-
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <p>© 2026 <strong>ธนภัทร แซ่ฟุ้ง (Thanaphat Saefung)</strong> — แฟ้มสะสมผลงานดิจิทัล</p>
-  </footer>
 
   <script>
     const certData = {
@@ -901,95 +695,38 @@
         org: "โรงเรียนบ้านบึง \"อุตสาหกรรมนุเคราะห์\"",
         img: "Screenshot_2026-09-17-23-06-11-090_com.google.android.apps.docs-edit.jpg",
         desc: "ได้เข้าร่วมการสัมมนา เรื่อง สัมมนาพัฒนาเทคโนโลยี (Technology Development Seminar) ในวันที่ 11 กุมภาพันธ์ พ.ศ. 2569 ณ โรงเรียนบ้านบึง \"อุตสาหกรรมนุเคราะห์\" ห้อง Fabrication Laboratory อาคาร 1 ชั้น 5"
-      },
-      14: {
-        badge: "โครงงานนวัตกรรม & IoT 🛠️",
-        title: "โครงงานระบบวัดความชื้นในดินและสั่งการรดน้ำอัตโนมัติผ่าน Blynk Cloud",
-        org: "การเรียนรู้พัฒนาโครงงานระบบฝังตัว (Embedded & IoT Systems)",
-        img: "cert1.jpg",
-        desc: "ออกแบบและพัฒนาอุปกรณ์ IoT ใช้ฮาร์ดแวร์เซนเซอร์วัดความชื้นในดิน (Soil Moisture Sensor) ต่อพ่วงไมโครคอนโทรลเลอร์ ส่งข้อมูลขึ้นระบบคลาวด์ Blynk เพื่อควบคุมและมอนิเตอร์การรดน้ำต้นไม้อัตโนมัติในมกราคม 2568"
-      },
-      15: {
-        badge: "การแข่งขันสตาร์ทอัพเทคโนโลยี 🚀",
-        title: "เข้าร่วมการแข่งขัน Student Techpreneur Competition 2026",
-        org: "โครงการส่งเสริมและพัฒนาผู้ประกอบการเทคโนโลยีรุ่นเยาว์",
-        img: "cert1.jpg",
-        desc: "เข้าร่วมนำเสนอแนวคิดนวัตกรรมและแบบจำลองธุรกิจเทคโนโลยี ในการแข่งขัน Student Techpreneur Competition ประจำเดือนสิงหาคม พ.ศ. 2569"
       }
     };
 
-    let currentModalId = 1;
-    const totalCertificates = Object.keys(certData).length;
-
+    // ทำงานเมื่อ DOM โหลดเรียบร้อย
     document.addEventListener('DOMContentLoaded', () => {
       const filterBtns = document.querySelectorAll('.filter-btn');
       const cards = document.querySelectorAll('.portfolio-card');
-      const searchInput = document.getElementById('searchInput');
-      const emptyState = document.getElementById('emptyState');
 
-      // ฟังก์ชันสำหรับกรองผลงานทั้งจาก Search Bar และ Category Filter
-      function filterPortfolio() {
-        const query = searchInput.value.toLowerCase().trim();
-        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-        let visibleCount = 0;
-
-        cards.forEach(card => {
-          const category = card.getAttribute('data-category');
-          const title = card.querySelector('.card-title').innerText.toLowerCase();
-          const org = card.querySelector('.card-org').innerText.toLowerCase();
-
-          const matchesCategory = (activeFilter === 'all' || category === activeFilter);
-          const matchesSearch = title.includes(query) || org.includes(query);
-
-          if (matchesCategory && matchesSearch) {
-            card.classList.remove('hide');
-            visibleCount++;
-          } else {
-            card.classList.add('hide');
-          }
-        });
-
-        if (visibleCount === 0) {
-          emptyState.classList.add('active');
-        } else {
-          emptyState.classList.remove('active');
-        }
-      }
-
-      // Event Listeners สำหรับ ปุ่ม Filter
       filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
+          // 1. สลับไฮไลต์ปุ่ม Active
           filterBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          filterPortfolio();
+
+          // 2. ดึงค่าหมวดหมู่ที่ต้องการกรอง
+          const filterValue = btn.getAttribute('data-filter');
+
+          // 3. กรองการแสดงผลการ์ด
+          cards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            if (filterValue === 'all' || cardCategory === filterValue) {
+              card.classList.remove('hide');
+            } else {
+              card.classList.add('hide');
+            }
+          });
         });
-      });
-
-      // Event Listener สำหรับช่องค้นหา
-      searchInput.addEventListener('input', filterPortfolio);
-
-      // Event Listener สำหรับ Scroll To Top
-      const scrollTopBtn = document.getElementById('scrollTopBtn');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          scrollTopBtn.classList.add('visible');
-        } else {
-          scrollTopBtn.classList.remove('visible');
-        }
       });
     });
 
-    // ฟังก์ชันจัดการ Modal Pop-up
+    // Modal Functions
     function openModal(id) {
-      currentModalId = id;
-      updateModalContent(id);
-
-      const modal = document.getElementById('portfolioModal');
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function updateModalContent(id) {
       const data = certData[id];
       if (!data) return;
 
@@ -998,7 +735,10 @@
       document.getElementById('mOrg').innerText = data.org;
       document.getElementById('mImg').src = data.img;
       document.getElementById('mDesc').innerText = data.desc;
-      document.getElementById('mCounter').innerText = `${id} / ${totalCertificates}`;
+
+      const modal = document.getElementById('portfolioModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
@@ -1012,30 +752,6 @@
         closeModal();
       }
     }
-
-    function nextModal() {
-      currentModalId = currentModalId >= totalCertificates ? 1 : currentModalId + 1;
-      updateModalContent(currentModalId);
-    }
-
-    function prevModal() {
-      currentModalId = currentModalId <= 1 ? totalCertificates : currentModalId - 1;
-      updateModalContent(currentModalId);
-    }
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Keyboard Navigation Shortcuts
-    document.addEventListener('keydown', (e) => {
-      const modal = document.getElementById('portfolioModal');
-      if (modal.classList.contains('active')) {
-        if (e.key === 'Escape') closeModal();
-        if (e.key === 'ArrowRight') nextModal();
-        if (e.key === 'ArrowLeft') prevModal();
-      }
-    });
   </script>
 
 </body>
