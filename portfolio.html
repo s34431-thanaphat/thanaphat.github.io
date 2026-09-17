@@ -150,6 +150,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s var(--bounce-timing);
+      user-select: none;
     }
 
     .filter-btn:hover, .filter-btn.active {
@@ -178,6 +179,11 @@
       flex-direction: column;
       transition: transform 0.3s var(--bounce-timing), border-color 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
+    }
+
+    /* Class สำหรับซ่อนการ์ดอย่างเด็ดขาด */
+    .portfolio-card.hide {
+      display: none !important;
     }
 
     .portfolio-card:hover {
@@ -402,12 +408,12 @@
       <p class="header-subtitle">รวบรวมเกียรติบัตร การแข่งขัน การฝึกงาน และกิจกรรมการเข้าร่วมอบรมต่างๆ</p>
     </div>
 
-    <!-- Filter Buttons (ปรับปรุง event handler เพิ่ม 'this') -->
+    <!-- Filter Buttons (ใช้อ้างอิง data-filter) -->
     <div class="filter-bar">
-      <button class="filter-btn active" onclick="filterPortfolio('all', this)">ทั้งหมด</button>
-      <button class="filter-btn" onclick="filterPortfolio('academic', this)">วิชาการ & การแข่งขัน</button>
-      <button class="filter-btn" onclick="filterPortfolio('internship', this)">การฝึกงาน</button>
-      <button class="filter-btn" onclick="filterPortfolio('activity', this)">กิจกรรม & การอบรม</button>
+      <button type="button" class="filter-btn active" data-filter="all">ทั้งหมด</button>
+      <button type="button" class="filter-btn" data-filter="academic">วิชาการ & การแข่งขัน</button>
+      <button type="button" class="filter-btn" data-filter="internship">การฝึกงาน</button>
+      <button type="button" class="filter-btn" data-filter="activity">กิจกรรม & การอบรม</button>
     </div>
 
     <!-- Portfolio Grid -->
@@ -619,4 +625,115 @@
         badge: "การอบรมทักษะความปลอดภัย",
         title: "อบรมเชิงปฏิบัติการทักษะการเผชิญเหตุแผ่นดินไหวและภัยพิบัติ",
         org: "โรงเรียนบ้านบึง \"อุตสาหกรรมนุเคราะห์\" ร่วมกับ สำนักงานป้องกันและบรรเทาสาธารณภัยจังหวัดชลบุรี",
-        img: "100
+        img: "1000006101.jpg",
+        desc: "ได้ผ่านการอบรมเชิงปฏิบัติการเสริมทักษะประสบการณ์และสมรรถนะด้านความปลอดภัย ในหัวข้อ 'การฝึกอบรมตามหลักสูตรทักษะการเผชิญเหตุแผ่นดินไหวและภัยพิบัติในสถานศึกษา' ประจำปีการศึกษา 2568 ให้ไว้ ณ วันที่ 5 มิถุนายน 2568"
+      },
+      6: {
+        badge: "การอบรมทักษะชีวิต",
+        title: "โครงการอบรม \"วัยรุ่นยุคใหม่ ใส่ใจสุขภาพจิต\"",
+        org: "โรงเรียนบ้านบึง \"อุตสาหกรรมนุเคราะห์\"",
+        img: "1000006107.jpg",
+        desc: "ได้เข้าร่วมโครงการอบรม 'วัยรุ่นยุคใหม่ ใส่ใจสุขภาพจิต' ประจำปีการศึกษา 2567 ณ โรงเรียนบ้านบึง 'อุตสาหกรรมนุเคราะห์' ให้ไว้ ณ วันที่ 30 สิงหาคม 2567"
+      },
+      7: {
+        badge: "กิจกรรมวิชาการ",
+        title: "เข้าร่วมงานมหกรรมวิชาการ สืบสานวัฒนธรรม เลิศล้ำอาหาร เปิดบ้านต้อนรับ EEC",
+        org: "โรงเรียนบ้านบึง \"อุตสาหกรรมนุเคราะห์\"",
+        img: "1000006102.jpg",
+        desc: "ได้เข้าร่วมกิจกรรมในงานมหกรรมวิชาการ สืบสานวัฒนธรรม เลิศล้ำอาหาร เปิดบ้านต้อนรับ EEC ให้ไว้ ณ วันที่ 15 มกราคม 2567"
+      },
+      8: {
+        badge: "โครงการพัฒนาคุณภาพชีวิต",
+        title: "โครงการอบรมคุณธรรม จริยธรรม เสริมสร้างสติปัญญา",
+        org: "โรงเรียนบ้านบึง \"อุตสาหกรรมนุเคราะห์\"",
+        img: "1000006106.jpg",
+        desc: "ได้เข้าร่วมโครงการอบรม คุณธรรม จริยธรรม เสริมสร้างสติปัญญา พัฒนาคุณภาพชีวิตของนักเรียน ระหว่างวันที่ 4 - 6 กรกฎาคม 2565 ณ หอประชุมกาญจนานนท์"
+      },
+      9: {
+        badge: "WORKSHOP / วิศวกรรมศาสตร์",
+        title: "WORKSHOP ปัญญาประดิษฐ์พื้นฐานร่วมกับข้อมูลด้านความมั่นคงปลอดภัยทางไซเบอร์",
+        org: "คณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง",
+        img: "1000005901.jpg",
+        desc: "ได้เข้าร่วม WORKSHOP หัวข้อ ปัญญาประดิษฐ์พื้นฐานร่วมกับข้อมูลด้านความมั่นคงปลอดภัยทางไซเบอร์ [EE, Computing] ในงาน K-ENGINEERING WORLD TOUR AND COMPETENCY CHALLENGE 2026 ให้ไว้ ณ วันที่ 5 กรกฎาคม 2569"
+      },
+      10: {
+        badge: "WORKSHOP / วิศวกรรมศาสตร์",
+        title: "WORKSHOP หัวข้อ PLC ขั้นพื้นฐาน [EE, Computing]",
+        org: "คณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง",
+        img: "1000005903_2.jpg",
+        desc: "ได้เข้าร่วม WORKSHOP หัวข้อ PLC ขั้นพื้นฐาน [EE, Computing] ในงาน K-ENGINEERING WORLD TOUR AND COMPETENCY CHALLENGE 2026 ให้ไว้ ณ วันที่ 5 กรกฎาคม 2569"
+      },
+      11: {
+        badge: "การอบรม / วิศวกรรมศาสตร์",
+        title: "เข้าร่วมกิจกรรม K-Engineering World Tour and Workshop 2025",
+        org: "คณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง",
+        img: "1000005899_2.jpg",
+        desc: "ได้เข้าร่วมกิจกรรม K-Engineering World Tour and Workshop 2025 จัดโดยคณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง ให้ไว้ ณ วันที่ 3 สิงหาคม 2568"
+      },
+      12: {
+        badge: "ค่ายวิชาการ / เทคโนโลยี",
+        title: "ค่ายยกระดับผลสัมฤทธิ์ทางการเรียนเทคโนโลยี",
+        org: "โรงเรียนบ้านบึง \"อุตสาหกรรมนุเคราะห์\"",
+        img: "1000005898.jpg",
+        desc: "ได้เข้าร่วมกิจกรรม \"ค่ายยกระดับผลสัมฤทธิ์ทางการเรียนเทคโนโลยี\" เพื่อยกระดับผลสัมฤทธิ์ทางการเรียนด้านเทคโนโลยีให้สูงขึ้น ผ่านกิจกรรมเสริมความรู้และทักษะที่สอดคล้องกับเนื้อหาของหลักสูตร ณ หอประชุมกาญจนานนท์ ให้ไว้ ณ วันที่ 24 มกราคม พ.ศ. 2569"
+      }
+    };
+
+    // ทำงานเมื่อ DOM โหลดเรียบร้อย
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.portfolio-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // 1. สลับไฮไลต์ปุ่ม Active
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          // 2. ดึงค่าหมวดหมู่ที่ต้องการกรอง
+          const filterValue = btn.getAttribute('data-filter');
+
+          // 3. กรองการแสดงผลการ์ด
+          cards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            if (filterValue === 'all' || cardCategory === filterValue) {
+              card.classList.remove('hide');
+            } else {
+              card.classList.add('hide');
+            }
+          });
+        });
+      });
+    });
+
+    // Modal Functions
+    function openModal(id) {
+      const data = certData[id];
+      if (!data) return;
+
+      document.getElementById('mBadge').innerText = data.badge;
+      document.getElementById('mTitle').innerText = data.title;
+      document.getElementById('mOrg').innerText = data.org;
+      document.getElementById('mImg').src = data.img;
+      document.getElementById('mDesc').innerText = data.desc;
+
+      const modal = document.getElementById('portfolioModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('portfolioModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeModalOnOutside(event) {
+      if (event.target.classList.contains('modal-overlay')) {
+        closeModal();
+      }
+    }
+  </script>
+
+</body>
+</html>
