@@ -271,7 +271,7 @@
       line-height: 1.6;
     }
 
-    /* Photo Gallery Grid (Updated to 6 Responsive Grid System) */
+    /* Photo Gallery Grid (Pure Image Cards) */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -285,7 +285,6 @@
       border-radius: 18px;
       overflow: hidden;
       display: flex;
-      flex-direction: column;
       width: 100%;
       transition: transform 0.3s var(--bounce-timing), border-color 0.3s ease;
     }
@@ -297,30 +296,9 @@
 
     .gallery-img {
       width: 100%;
-      height: 200px;
+      height: 220px;
       object-fit: cover;
       display: block;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-    }
-
-    .gallery-caption {
-      padding: 0.9rem 1rem;
-      background: rgba(11, 13, 16, 0.85);
-      backdrop-filter: blur(8px);
-      flex-grow: 1;
-    }
-
-    .gallery-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 0.25rem;
-    }
-
-    .gallery-desc {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      line-height: 1.4;
     }
 
     /* Skill Tags */
@@ -385,7 +363,7 @@
         align-items: flex-start;
       }
       .gallery-img {
-        height: 180px;
+        height: 190px;
       }
     }
   </style>
@@ -486,77 +464,35 @@
       </div>
     </section>
 
-    <!-- Photo Gallery Section (6 Photos) -->
+    <!-- Photo Gallery Section (Pure Image Grid) -->
     <section class="section-block">
       <div class="section-title">
         <span class="icon">🖼️</span> ภาพบรรยากาศการฝึกงาน
       </div>
 
       <div class="gallery-grid">
-        <!-- Photo 1 -->
         <div class="gallery-item">
-          <img src="1789102185523.jpg" alt="บรรยากาศการปฏิบัติงานราชการ" class="gallery-img">
-          <div class="gallery-caption">
-            <div class="gallery-title">บรรยากาศการปฏิบัติงาน</div>
-            <div class="gallery-desc">
-              การปฏิบัติงานประจำวันและสนับสนุนงานฝ่ายบริหารทั่วไป ณ เทศบาลตำบลหนองไผ่แก้ว
-            </div>
-          </div>
+          <img src="1789102185523.jpg" alt="ภาพบรรยากาศการฝึกงาน 1" class="gallery-img">
         </div>
 
-        <!-- Photo 2 -->
         <div class="gallery-item">
-          <img src="1789671483328.jpg" alt="การจัดทำและจัดการเอกสารสารบรรณ" class="gallery-img">
-          <div class="gallery-caption">
-            <div class="gallery-title">งานเอกสารและสารบรรณ</div>
-            <div class="gallery-desc">
-              จัดเก็บ ลงทะเบียนหนังสือรับ-ส่ง และคัดแยกเอกสารราชการอย่างเป็นระบบ
-            </div>
-          </div>
+          <img src="1789671483328.jpg" alt="ภาพบรรยากาศการฝึกงาน 2" class="gallery-img">
         </div>
 
-        <!-- Photo 3 -->
         <div class="gallery-item">
-          <img src="1789671508397.jpg" alt="การประสานงานภายในองค์กร" class="gallery-img">
-          <div class="gallery-caption">
-            <div class="gallery-title">การประสานงานภายใน</div>
-            <div class="gallery-desc">
-              ส่งมอบหนังสือราชการและประสานงานระหว่างสำนัก/กองต่างๆ ภายในเทศบาล
-            </div>
-          </div>
+          <img src="1789671508397.jpg" alt="ภาพบรรยากาศการฝึกงาน 3" class="gallery-img">
         </div>
 
-        <!-- Photo 4 -->
         <div class="gallery-item">
-          <img src="1789671511103.jpg" alt="การอำนวยความสะดวกและบริการประชาชน" class="gallery-img">
-          <div class="gallery-caption">
-            <div class="gallery-title">การบริการประชาชน</div>
-            <div class="gallery-desc">
-              ต้อนรับและอำนวยความสะดวกแก่ผู้มาติดต่อราชการด้วยความสุภาพ
-            </div>
-          </div>
+          <img src="1789671511103.jpg" alt="ภาพบรรยากาศการฝึกงาน 4" class="gallery-img">
         </div>
 
-        <!-- Photo 5 -->
         <div class="gallery-item">
-          <img src="1789671521257.jpg" alt="การจัดเตรียมงานประชุมและโครงการ" class="gallery-img">
-          <div class="gallery-caption">
-            <div class="gallery-title">สนับสนุนการประชุม & โครงการ</div>
-            <div class="gallery-desc">
-              ร่วมจัดเตรียมสถานที่และเอกสารสำหรับการประชุมและการจัดกิจกรรมชุมชน
-            </div>
-          </div>
+          <img src="1789671521257.jpg" alt="ภาพบรรยากาศการฝึกงาน 5" class="gallery-img">
         </div>
 
-        <!-- Photo 6 -->
         <div class="gallery-item">
-          <img src="1789671538356.jpg" alt="การทำงานร่วมกับคณะผู้บริหารและเจ้าหน้าที่" class="gallery-img">
-          <div class="gallery-caption">
-            <div class="gallery-title">ร่วมกิจกรรมกับทีมงาน</div>
-            <div class="gallery-desc">
-              ถ่ายภาพร่วมกับคณะผู้บริหารและพี่ๆ เจ้าหน้าที่เนื่องในโอกาสปฏิบัติงาน
-            </div>
-          </div>
+          <img src="1789671538356.jpg" alt="ภาพบรรยากาศการฝึกงาน 6" class="gallery-img">
         </div>
       </div>
     </section>
