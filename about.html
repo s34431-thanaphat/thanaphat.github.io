@@ -512,6 +512,7 @@
     .bottom-cta {
       display: flex;
       justify-content: center;
+      align-items: center;
       width: 100%;
       margin-top: 0.5rem;
     }
@@ -535,6 +536,13 @@
     .btn-portfolio:hover {
       transform: translateY(-4px) scale(1.03);
       box-shadow: 0 12px 30px rgba(212, 175, 55, 0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-light);
+      box-shadow: none;
     }
 
     /* --- POPUP MODAL STYLES --- */
@@ -995,9 +1003,12 @@
     </section>
 
     <!-- ปุ่ม CTA ล่างสุด -->
-    <div class="bottom-cta">
-      <a href="portfolio.html" class="btn-portfolio">
-        เข้าชมแฟ้มสะสมผลงาน (Portfolio) &rarr;
+    <div class="bottom-cta" style="gap: 1rem; flex-wrap: wrap;">
+      <a href="internship.html" class="btn-portfolio">
+        ไปที่หน้าประวัติการฝึกงาน (Internship) &rarr;
+      </a>
+      <a href="portfolio.html" class="btn-portfolio btn-secondary">
+        เข้าชมแฟ้มสะสมผลงาน (Portfolio)
       </a>
     </div>
 
